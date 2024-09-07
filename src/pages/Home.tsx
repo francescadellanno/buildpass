@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
 
 //TODO: Change colours to use hash
 //TODO: Create constants for mobile / small screen sizes
-
+//TODO: Add semantic headings etc h1, h2, h3 etc
 const BackgroundGlobalStyle = createGlobalStyle`
   body, html {
     margin: 0;
@@ -38,7 +39,8 @@ const HeadingText = styled.div`
   }
 `;
 
-const GetStartedButton = styled.button`
+const GetStartedLink = styled(Link)`
+  display: inline-block;
   background-color: #c89f9c;
   border: none;
   border-radius: 8px;
@@ -47,6 +49,8 @@ const GetStartedButton = styled.button`
   cursor: pointer;
   font-size: 16px;
   padding: 12px 24px;
+  text-decoration: none; /* Remove underline */
+  text-align: center;
   transition: background-color 0.3s ease, transform 0.2s ease;
 
   &:hover {
@@ -58,7 +62,7 @@ const GetStartedButton = styled.button`
   }
 `;
 
-function Home() {
+const Home: React.FC = () => {
   const handleClick = () => {
     alert("Button clicked!");
   };
@@ -70,11 +74,11 @@ function Home() {
         <HeadingText>Construction</HeadingText>
         <HeadingText>Your Site Diary</HeadingText>
         <div>
-          <GetStartedButton onClick={handleClick}>GET STARTED</GetStartedButton>
+          <GetStartedLink to="/diary-entries">GET STARTED</GetStartedLink>
         </div>
       </HomeWrapper>
     </>
   );
-}
+};
 
 export default Home;

@@ -2,6 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Home from "./pages/Home";
 import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import NotFound from "./pages/NotFound";
+import DiaryEntries from "./pages/DiaryEntries";
+import DiaryEntry from "./pages/DiaryEntry";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -9,7 +13,15 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <Home />
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/diary-entries" element={<DiaryEntries />} />
+        <Route path="/diary-entry" element={<DiaryEntry />} />
+        <Route path="/add-diary-entry" element={<DiaryEntries />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Router>
   </React.StrictMode>
 );
 
