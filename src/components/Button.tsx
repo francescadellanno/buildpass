@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const BackButtonWrapper = styled(Link)`
+const ButtonWrapper = styled(Link)`
   display: flex;
   align-items: center;
   padding: 10px 20px;
@@ -38,18 +38,21 @@ const BackArrow = styled.svg`
   fill: white;
 `;
 
-const BackButton: React.FC<{ text: string; path: string }> = ({
+const Button: React.FC<{ text: string; path: string; arrow?: boolean }> = ({
   text,
   path,
+  arrow = false,
 }) => {
   return (
-    <BackButtonWrapper to={path}>
-      <BackArrow xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d="M19 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H19v-2z" />
-      </BackArrow>
+    <ButtonWrapper to={path}>
+      {arrow && (
+        <BackArrow xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M19 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H19v-2z" />
+        </BackArrow>
+      )}
       {text}
-    </BackButtonWrapper>
+    </ButtonWrapper>
   );
 };
 
-export default BackButton;
+export default Button;

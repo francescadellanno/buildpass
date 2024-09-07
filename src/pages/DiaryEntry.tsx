@@ -5,7 +5,7 @@ import { colors, siteDiary } from "../constants";
 import DiaryEntryCard from "../components/DiaryEntryCard";
 import DiaryLayout from "../components/DiaryLayout";
 import Header from "../components/Header";
-import BackButton from "../components/BackButton";
+import Button from "../components/Button";
 
 //TODO: Make sure using all data from data entries / assessment
 //TODO: Update weather to be better...
@@ -37,7 +37,7 @@ const DiaryEntry: React.FC = () => {
       <Header />
       <DiaryLayout>
         <div>
-          <BackButton text="Reports" path="/diary-entries" />
+          <Button arrow text="Back" path="/diary-entries" />
         </div>
         <DiaryEntryCard entry={entry} />
       </DiaryLayout>

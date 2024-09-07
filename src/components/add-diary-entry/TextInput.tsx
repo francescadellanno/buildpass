@@ -2,9 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { colors } from "../../constants";
 
-interface TitleInputProps {
-  title: string;
-  setTitle: (title: string) => void;
+interface TextInputProps {
+  labelText: string;
+  value: string;
+  setValue: (title: string) => void;
+  id: string;
 }
 
 const Container = styled.div`
@@ -12,6 +14,7 @@ const Container = styled.div`
   flex-direction: column;
   gap: 8px;
   margin-bottom: 16px;
+  width: 100%;
 `;
 
 const Label = styled.label`
@@ -33,17 +36,22 @@ const Input = styled.input`
   }
 `;
 
-const TitleInput: React.FC<TitleInputProps> = ({ title, setTitle }) => (
+const TextInput: React.FC<TextInputProps> = ({
+  id,
+  labelText,
+  value,
+  setValue,
+}) => (
   <Container>
-    <Label htmlFor="title">Title</Label>
+    <Label htmlFor={id}>{labelText}</Label>
     <Input
       type="text"
-      id="title"
-      value={title}
-      onChange={(e) => setTitle(e.target.value)}
+      id={id}
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
       required
     />
   </Container>
 );
 
-export default TitleInput;
+export default TextInput;

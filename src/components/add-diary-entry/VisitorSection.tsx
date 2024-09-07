@@ -45,6 +45,8 @@ const InputBlock = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
+  width: 100%;
+  box-sizing: border-box; /* Ensure consistent sizing */
 `;
 
 const Label = styled.label`
@@ -53,15 +55,24 @@ const Label = styled.label`
 `;
 
 const Input = styled.input`
+  color: ${colors.dark};
   padding: 8px;
   border: 1px solid ${colors.dark};
   border-radius: 4px;
-  font-size: 16px;
+  font-size: 1rem;
+`;
+
+const DateInput = styled.input`
+  color: ${colors.dark};
+  padding: 7px;
+  border: 1px solid ${colors.dark};
+  border-radius: 4px;
+  font-size: 1rem;
 `;
 
 const Select = styled.select`
   color: ${colors.dark};
-  padding: 8px 12px;
+  padding: 7px 12px;
   border: 1px solid ${colors.dark};
   border-radius: 4px;
   font-size: 1rem;
@@ -100,7 +111,6 @@ const InputGroupWrapper = styled.div`
   @media (min-width: ${breakpoints.tablet}) {
     flex-direction: row;
     justify-content: space-between;
-    gap: unset;
   }
 `;
 
@@ -132,7 +142,7 @@ const VisitorSection: React.FC<VisitorSectionProps> = ({
           </InputBlock>
           <InputBlock>
             <Label htmlFor={`visitor-date-${index}`}>Date</Label>
-            <Input
+            <DateInput
               type="date"
               id={`visitor-date-${index}`}
               name="date"
@@ -141,7 +151,6 @@ const VisitorSection: React.FC<VisitorSectionProps> = ({
               required
             />
           </InputBlock>
-
           <InputBlock>
             <Label htmlFor={`organization-${index}`}>Organization</Label>
             <Input

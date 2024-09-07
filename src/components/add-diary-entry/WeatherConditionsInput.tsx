@@ -13,6 +13,7 @@ const Container = styled.div`
   flex-direction: column;
   gap: 8px;
   margin-bottom: 16px;
+  width: 100%;
 `;
 
 const Label = styled.label`

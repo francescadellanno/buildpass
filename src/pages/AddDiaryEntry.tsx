@@ -1,7 +1,5 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
-import axios from "axios";
+import React from "react";
 import { breakpoints, colors, weatherOptions } from "../constants";
-import TitleInput from "../components/add-diary-entry/TitleInput";
 import DateInput from "../components/add-diary-entry/DateInput";
 import DescriptionInput from "../components/add-diary-entry/DescriptionInput";
 import WeatherConditionsInput from "../components/add-diary-entry/WeatherConditionsInput";
@@ -12,7 +10,10 @@ import styled, { createGlobalStyle } from "styled-components";
 import Header from "../components/Header";
 import DiaryLayout from "../components/DiaryLayout";
 import SubmitButton from "../components/add-diary-entry/SubmitButton";
-import { supabase } from "../supabaseClient";
+import useSiteDiaryForm from "../hooks";
+import TextInput from "../components/add-diary-entry/TextInput";
+import Spinner from "../components/Spinner";
+import Button from "../components/Button";
 
 const BackgroundGlobalStyle = createGlobalStyle`
   body, html {
@@ -29,6 +30,8 @@ const BackgroundGlobalStyle = createGlobalStyle`
 const InputGroupWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
+  gap: 16px;
 
   @media (min-width: ${breakpoints.tablet}) {
     flex-direction: row;
@@ -36,173 +39,126 @@ const InputGroupWrapper = styled.div`
   }
 `;
 
-interface Resource {
-  type: string;
-  description: string;
-}
+const SuccessText = styled.div`
+  background-color: ${colors.white};
+  border: 2px solid ${colors.primary};
+  border-radius: 16px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  color: ${colors.dark};
+  padding: 20px;
+  text-align: center;
+  font-size: 1rem;
+`;
 
-const initialResource: Resource = {
-  type: "",
-  description: "",
-};
+const SuccessButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
-interface Visitor {
-  type: string;
-  organization?: string;
-  person?: string;
-  date: string;
-}
-
-const initialVisitor: Visitor = {
-  type: "",
-  organization: "",
-  person: "",
-  date: "",
-};
-
+// TODO: Look into ununsed imports for hooks
 const SiteDiaryForm: React.FC = () => {
-  const [title, setTitle] = useState<string>("");
-  const [date, setDate] = useState("");
-  const [description, setDescription] = useState("");
-  const [weatherConditions, setWeatherConditions] = useState(weatherOptions[0]);
-  const [image, setImage] = useState<string | null>(null);
-  const [resources, setResources] = useState<Resource[]>([initialResource]);
-  const [visitors, setVisitors] = useState<Visitor[]>([initialVisitor]);
-
-  const handleImageUpload = async (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    console.log("$$before that!");
-    const file = event.target.files?.[0];
-    console.log("$$file", file);
-    // Check if a file was uploaded
-    if (!file) return;
-
-    // Generate a unique file name
-    const fileName = `${Date.now()}_${file.name}`;
-
-    // Upload the file to Supabase Storage
-    const { data, error } = await supabase.storage
-      .from("buildpass-coding-test-bucket") // Replace with your Supabase bucket name
-      .upload(fileName, file);
-
-    if (error) {
-      console.error("Error uploading file:", error.message);
-      return null;
-    }
-    // Get the public URL of the uploaded file
-    const {
-      data: { publicUrl },
-    } = supabase.storage
-      .from("buildpass-coding-test-bucket")
-      .getPublicUrl(fileName);
-    console.log("$$public url:", publicUrl);
-    setImage(publicUrl);
-  };
-
-  const handleResourceChange = (
-    index: number,
-    e: ChangeEvent<HTMLInputElement>
-  ) => {
-    const { name, value } = e.target;
-    const newResources = [...resources];
-    newResources[index] = { ...newResources[index], [name]: value };
-    setResources(newResources);
-  };
-
-  const handleAddResource = () => {
-    setResources([...resources, { ...initialResource }]);
-  };
-
-  const handleRemoveResource = (index: number) => {
-    const newResources = resources.filter((_, i) => i !== index);
-    setResources(newResources);
-  };
-
-  const handleVisitorChange = (
-    index: number,
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
-    const newVisitors = [...visitors];
-    newVisitors[index] = { ...newVisitors[index], [name]: value };
-    setVisitors(newVisitors);
-  };
-
-  const handleAddVisitor = () => {
-    setVisitors([...visitors, { ...initialVisitor }]);
-  };
-
-  const handleRemoveVisitor = (index: number) => {
-    const newVisitors = visitors.filter((_, i) => i !== index);
-    setVisitors(newVisitors);
-  };
-
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log({
-      title,
-      date,
-      description,
-      weatherConditions,
-      resources,
-      visitors,
-      image,
-    });
-
-    const { data, error } = await supabase
-      .from("BuildPass Site Diary")
-      .insert([
-        {
-          title,
-          date,
-          description,
-          weather: weatherConditions,
-          resources,
-          visitors,
-          // { instructions },
-          image,
-        },
-      ])
-      .select();
-  };
+  const {
+    title,
+    setTitle,
+    date,
+    setDate,
+    description,
+    setDescription,
+    weatherConditions,
+    setWeatherConditions,
+    image,
+    handleImageUpload,
+    instructions,
+    setInstructions,
+    incidents,
+    setIncidents,
+    resources,
+    handleResourceChange,
+    handleAddResource,
+    handleRemoveResource,
+    visitors,
+    handleVisitorChange,
+    handleAddVisitor,
+    handleRemoveVisitor,
+    loading,
+    successMessage,
+    errorMessage,
+    handleSubmit,
+    showForm,
+    uniqueId,
+  } = useSiteDiaryForm();
 
   return (
     <>
       <BackgroundGlobalStyle />
       <Header />
-      <DiaryLayout>
-        <form onSubmit={handleSubmit}>
-          <InputGroupWrapper>
-            <TitleInput title={title} setTitle={setTitle} />
-            <DateInput date={date} setDate={setDate} />
-            <WeatherConditionsInput
-              weatherConditions={weatherConditions}
-              setWeatherConditions={setWeatherConditions}
-              weatherOptions={weatherOptions}
-            />
-          </InputGroupWrapper>
-          <DescriptionInput
-            description={description}
-            setDescription={setDescription}
-          />
 
-          <ImageUpload handleImageUpload={handleImageUpload} />
-          <ResourceSection
-            resources={resources}
-            handleResourceChange={handleResourceChange}
-            handleAddResource={handleAddResource}
-            handleRemoveResource={handleRemoveResource}
-          />
-          <VisitorSection
-            visitors={visitors}
-            handleVisitorChange={handleVisitorChange}
-            handleAddVisitor={handleAddVisitor}
-            handleRemoveVisitor={handleRemoveVisitor}
-          />
-          <SubmitButton type="submit">Submit</SubmitButton>
-        </form>
+      <DiaryLayout>
+        {loading && <Spinner />}
+        {!loading && successMessage && (
+          <>
+            <SuccessText>
+              {successMessage}Diary entry "${title}" submitted successfully!
+            </SuccessText>
+            <SuccessButtonWrapper>
+              {/* TODO Update this to include correct id from db */}
+              <Button
+                text="View uploaded report"
+                path={`/diary-entry/${uniqueId}`}
+              />
+              <Button text="+ Add another report" path="/add-diary-entry" />
+            </SuccessButtonWrapper>
+          </>
+        )}
+        {!loading && errorMessage && <div>{errorMessage}</div>}
+        {showForm && (
+          <form onSubmit={handleSubmit}>
+            <InputGroupWrapper>
+              <TextInput
+                id="title"
+                labelText="Title"
+                value={title}
+                setValue={setTitle}
+              />
+              <DateInput date={date} setDate={setDate} />
+              <WeatherConditionsInput
+                weatherConditions={weatherConditions}
+                setWeatherConditions={setWeatherConditions}
+                weatherOptions={weatherOptions}
+              />
+            </InputGroupWrapper>
+            <DescriptionInput
+              description={description}
+              setDescription={setDescription}
+            />
+            <ImageUpload handleImageUpload={handleImageUpload} />
+            <TextInput
+              id="instructions"
+              labelText="Instructions"
+              value={instructions}
+              setValue={setInstructions}
+            />
+            <TextInput
+              id="incidents"
+              labelText="Incidents"
+              value={incidents}
+              setValue={setIncidents}
+            />
+            <ResourceSection
+              resources={resources}
+              handleResourceChange={handleResourceChange}
+              handleAddResource={handleAddResource}
+              handleRemoveResource={handleRemoveResource}
+            />
+            <VisitorSection
+              visitors={visitors}
+              handleVisitorChange={handleVisitorChange}
+              handleAddVisitor={handleAddVisitor}
+              handleRemoveVisitor={handleRemoveVisitor}
+            />
+            <SubmitButton type="submit">Submit</SubmitButton>
+          </form>
+        )}
       </DiaryLayout>
     </>
   );
