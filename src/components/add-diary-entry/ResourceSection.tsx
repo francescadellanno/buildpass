@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { colors } from "../../constants";
+import { breakpoints, colors } from "../../constants";
 
 interface Resource {
   type: string;
@@ -16,6 +16,17 @@ interface ResourceSectionProps {
   handleAddResource: () => void;
   handleRemoveResource: (index: number) => void;
 }
+
+const InputGroupWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @media (min-width: ${breakpoints.tablet}) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+`;
 
 const Container = styled.div`
   margin: 16px 0;
@@ -43,6 +54,7 @@ const InputBlock = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
+  width: 100%;
 `;
 
 const Label = styled.label`
@@ -86,28 +98,30 @@ const ResourceSection: React.FC<ResourceSectionProps> = ({
     <Title>Resources</Title>
     {resources.map((resource, index) => (
       <ResourceGroup key={index}>
-        <InputBlock>
-          <Label htmlFor={`type-${index}`}>Type</Label>
-          <Input
-            type="text"
-            id={`type-${index}`}
-            name="type"
-            value={resource.type}
-            onChange={(e) => handleResourceChange(index, e)}
-            required
-          />
-        </InputBlock>
-        <InputBlock>
-          <Label htmlFor={`description-${index}`}>Description</Label>
-          <Input
-            type="text"
-            id={`description-${index}`}
-            name="description"
-            value={resource.description}
-            onChange={(e) => handleResourceChange(index, e)}
-            required
-          />
-        </InputBlock>
+        <InputGroupWrapper>
+          <InputBlock>
+            <Label htmlFor={`type-${index}`}>Type</Label>
+            <Input
+              type="text"
+              id={`type-${index}`}
+              name="type"
+              value={resource.type}
+              onChange={(e) => handleResourceChange(index, e)}
+              required
+            />
+          </InputBlock>
+          <InputBlock>
+            <Label htmlFor={`description-${index}`}>Description</Label>
+            <Input
+              type="text"
+              id={`description-${index}`}
+              name="description"
+              value={resource.description}
+              onChange={(e) => handleResourceChange(index, e)}
+              required
+            />
+          </InputBlock>
+        </InputGroupWrapper>
         <Button type="button" onClick={() => handleRemoveResource(index)}>
           Remove Resource
         </Button>

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { colors } from "../../constants";
+import { breakpoints, colors } from "../../constants";
 
 interface Visitor {
   type: string;
@@ -92,6 +92,18 @@ const Button = styled.button`
   }
 `;
 
+const InputGroupWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @media (min-width: ${breakpoints.tablet}) {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: unset;
+  }
+`;
+
 const VisitorSection: React.FC<VisitorSectionProps> = ({
   visitors,
   handleVisitorChange,
@@ -102,52 +114,55 @@ const VisitorSection: React.FC<VisitorSectionProps> = ({
     <Title>Visitors</Title>
     {visitors.map((visitor, index) => (
       <VisitorGroup key={index}>
-        <InputBlock>
-          <Label htmlFor={`visitor-type-${index}`}>Type</Label>
-          <Select
-            id={`visitor-type-${index}`}
-            name="type"
-            value={visitor.type}
-            onChange={(e) => handleVisitorChange(index, e)}
-            required
-          >
-            <option value="">Select Type</option>
-            <option value="Site Visit">Site Visit</option>
-            <option value="Inspection">Inspection</option>
-            <option value="Delivery">Delivery</option>
-          </Select>
-        </InputBlock>
-        <InputBlock>
-          <Label htmlFor={`organization-${index}`}>Organization</Label>
-          <Input
-            type="text"
-            id={`organization-${index}`}
-            name="organization"
-            value={visitor.organization || ""}
-            onChange={(e) => handleVisitorChange(index, e)}
-          />
-        </InputBlock>
-        <InputBlock>
-          <Label htmlFor={`person-${index}`}>Person</Label>
-          <Input
-            type="text"
-            id={`person-${index}`}
-            name="person"
-            value={visitor.person || ""}
-            onChange={(e) => handleVisitorChange(index, e)}
-          />
-        </InputBlock>
-        <InputBlock>
-          <Label htmlFor={`visitor-date-${index}`}>Date</Label>
-          <Input
-            type="date"
-            id={`visitor-date-${index}`}
-            name="date"
-            value={visitor.date}
-            onChange={(e) => handleVisitorChange(index, e)}
-            required
-          />
-        </InputBlock>
+        <InputGroupWrapper>
+          <InputBlock>
+            <Label htmlFor={`visitor-type-${index}`}>Type</Label>
+            <Select
+              id={`visitor-type-${index}`}
+              name="type"
+              value={visitor.type}
+              onChange={(e) => handleVisitorChange(index, e)}
+              required
+            >
+              <option value="">Select Type</option>
+              <option value="Site Visit">Site Visit</option>
+              <option value="Inspection">Inspection</option>
+              <option value="Delivery">Delivery</option>
+            </Select>
+          </InputBlock>
+          <InputBlock>
+            <Label htmlFor={`visitor-date-${index}`}>Date</Label>
+            <Input
+              type="date"
+              id={`visitor-date-${index}`}
+              name="date"
+              value={visitor.date}
+              onChange={(e) => handleVisitorChange(index, e)}
+              required
+            />
+          </InputBlock>
+
+          <InputBlock>
+            <Label htmlFor={`organization-${index}`}>Organization</Label>
+            <Input
+              type="text"
+              id={`organization-${index}`}
+              name="organization"
+              value={visitor.organization || ""}
+              onChange={(e) => handleVisitorChange(index, e)}
+            />
+          </InputBlock>
+          <InputBlock>
+            <Label htmlFor={`person-${index}`}>Person</Label>
+            <Input
+              type="text"
+              id={`person-${index}`}
+              name="person"
+              value={visitor.person || ""}
+              onChange={(e) => handleVisitorChange(index, e)}
+            />
+          </InputBlock>
+        </InputGroupWrapper>
         <Button type="button" onClick={() => handleRemoveVisitor(index)}>
           Remove Visitor
         </Button>
