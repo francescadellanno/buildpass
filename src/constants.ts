@@ -16,6 +16,8 @@ export const colors = {
   dark: "#B36A5E",
 };
 
+// TODO: Go through all unused fields
+
 export const siteDiary: SiteDiaryEntry[] = [
   {
     id: "5",
@@ -24,12 +26,24 @@ export const siteDiary: SiteDiaryEntry[] = [
     workProgress:
       "Foundation excavation completed; structural steel erection at 50%.",
     weatherConditions: "Sunny with temperatures between 22°C and 28°C.",
-    resources: {
-      laborers: 20,
-      cranes: 2,
-      materials: ["Concrete", "Steel beams"],
-      machinery: ["Excavator", "Crane"],
-    },
+    resources: [
+      {
+        type: "Laborers",
+        description: "20",
+      },
+      {
+        type: "Cranes",
+        description: "2",
+      },
+      {
+        type: "Materials",
+        description: "Concrete, Steel beams",
+      },
+      {
+        type: "Machinery",
+        description: "Excavator, Crane",
+      },
+    ],
     incidents:
       "Minor delay due to equipment malfunction; resolved within 1 hour.",
     visitors: [
@@ -54,12 +68,24 @@ export const siteDiary: SiteDiaryEntry[] = [
     workProgress:
       "Structural steel installation completed; concrete pouring for floors in progress.",
     weatherConditions: "Overcast with light rain; temperatures around 18°C.",
-    resources: {
-      laborers: 18,
-      cranes: 3,
-      materials: ["Concrete", "Steel reinforcement"],
-      machinery: ["Concrete mixer", "Crane"],
-    },
+    resources: [
+      {
+        type: "Laborers",
+        description: "18",
+      },
+      {
+        type: "Cranes",
+        description: "3",
+      },
+      {
+        type: "Materials",
+        description: "Concrete, Steel reinforcement",
+      },
+      {
+        type: "Machinery",
+        description: "Concrete mixer, Crane",
+      },
+    ],
     incidents: "Heavy rain caused delays; work halted for 2 hours.",
     visitors: [
       { type: "Site Visit", person: "Project Manager", date: "2024-09-02" },
@@ -80,12 +106,24 @@ export const siteDiary: SiteDiaryEntry[] = [
       "Concrete floors cured; electrical and plumbing rough-ins started.",
     weatherConditions:
       "Partly cloudy with temperatures ranging from 20°C to 25°C.",
-    resources: {
-      laborers: 25,
-      cranes: 1,
-      materials: ["Electrical wiring", "Plumbing pipes"],
-      machinery: ["Drill", "Pipe bender"],
-    },
+    resources: [
+      {
+        type: "Laborers",
+        description: "25",
+      },
+      {
+        type: "Cranes",
+        description: "1",
+      },
+      {
+        type: "Materials",
+        description: "Electrical wiring, Plumbing pipes",
+      },
+      {
+        type: "Machinery",
+        description: "Drill, Pipe bender",
+      },
+    ],
     incidents: "No incidents reported.",
     visitors: [
       {
@@ -105,12 +143,24 @@ export const siteDiary: SiteDiaryEntry[] = [
     workProgress:
       "Interior wall framing completed; drywall installation underway.",
     weatherConditions: "Clear skies with temperatures between 23°C and 30°C.",
-    resources: {
-      laborers: 30,
-      cranes: 1,
-      materials: ["Drywall", "Insulation"],
-      machinery: ["Framing nailer", "Screwdriver"],
-    },
+    resources: [
+      {
+        type: "Laborers",
+        description: "30",
+      },
+      {
+        type: "Cranes",
+        description: "1",
+      },
+      {
+        type: "Materials",
+        description: "Drywall, Insulation",
+      },
+      {
+        type: "Machinery",
+        description: "Framing nailer, Screwdriver",
+      },
+    ],
     incidents:
       "Minor issue with drywall delivery; resolved by rerouting another shipment.",
     visitors: [
@@ -131,12 +181,24 @@ export const siteDiary: SiteDiaryEntry[] = [
     workProgress:
       "Interior wall framing completed; drywall installation underway.",
     weatherConditions: "Sunny with temperatures around 25°C.",
-    resources: {
-      laborers: 28,
-      cranes: 1,
-      materials: ["Drywall", "Joint compound"],
-      machinery: ["Drywall lift", "Utility knife"],
-    },
+    resources: [
+      {
+        type: "Laborers",
+        description: "28",
+      },
+      {
+        type: "Cranes",
+        description: "1",
+      },
+      {
+        type: "Materials",
+        description: "Drywall, Joint compound",
+      },
+      {
+        type: "Machinery",
+        description: "Drywall lift, Utility knife",
+      },
+    ],
     incidents: "No incidents reported.",
     visitors: [
       {

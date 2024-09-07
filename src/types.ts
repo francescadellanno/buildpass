@@ -6,10 +6,8 @@ interface Visitor {
 }
 
 interface Resources {
-  laborers?: number;
-  cranes?: number;
-  materials?: string[];
-  machinery?: string[];
+  type: string;
+  description: string;
 }
 
 export interface SiteDiaryEntry {
@@ -18,7 +16,7 @@ export interface SiteDiaryEntry {
   title: string;
   workProgress: string;
   weatherConditions: string;
-  resources: Resources;
+  resources: Resources[];
   incidents: string;
   visitors: Visitor[];
   instructions: string;

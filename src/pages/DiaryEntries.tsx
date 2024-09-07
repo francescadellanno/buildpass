@@ -26,6 +26,8 @@ const EntryList = styled.div`
 const EntryLink = styled(Link)`
   text-decoration: none;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 16px;
+  cursor: pointer;
 
   &:hover {
     transform: translateY(-5px);
@@ -42,7 +44,7 @@ const DiaryEntries: React.FC = () => {
         <EntryList>
           {siteDiary.map((entry) => (
             <EntryLink key={entry.id} to={`/diary-entry/entry/${entry.id}`}>
-              <DiaryEntryCard {...entry} />
+              <DiaryEntryCard compressed entry={entry} />
             </EntryLink>
           ))}
         </EntryList>

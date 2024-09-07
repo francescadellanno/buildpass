@@ -9,7 +9,6 @@ const HeaderWrapper = styled.div`
   justify-content: space-between;
   border-bottom: 1px solid ${colors.dark};
   padding: 1rem;
-  margin-bottom: 1.5rem;
 
   @media (max-width: ${breakpoints.tablet}) {
     flex-direction: column;
@@ -49,6 +48,8 @@ const HeaderLink = styled(Link)`
   }
 `;
 
+// TODO: Make selected header link underlined
+
 const Header: React.FC = () => {
   return (
     <HeaderWrapper>
@@ -56,7 +57,7 @@ const Header: React.FC = () => {
       <HeaderLinks>
         <HeaderLink to="/">Home</HeaderLink>
         <HeaderLink to="/diary-entries">Reports</HeaderLink>
-        <HeaderLink to="/add-entry">Add report</HeaderLink>
+        <HeaderLink to="/add-entry">Add Report</HeaderLink>
       </HeaderLinks>
     </HeaderWrapper>
   );
