@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
+import { colors } from "../constants";
 
 //TODO: Change colours to use hash
 //TODO: Create constants for mobile / small screen sizes
@@ -10,7 +11,7 @@ const BackgroundGlobalStyle = createGlobalStyle`
   body, html {
     margin: 0;
     height: 100%;
-    background-color: #B36A5E;
+    background-color: ${colors.dark};
   }
 
   #root {
@@ -20,7 +21,7 @@ const BackgroundGlobalStyle = createGlobalStyle`
 
 const HomeWrapper = styled.div`
   align-items: center;
-  color: #eee2df;
+  color: ${colors.lightest};
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -29,45 +30,28 @@ const HomeWrapper = styled.div`
 `;
 
 const HeadingText = styled.div`
-  font-size: 100px;
-
-  @media (max-width: 768px) {
-    font-size: 70px; /* Font size for mobile phones */
-  }
-
-  @media (max-width: 480px) {
-    font-size: 60px; /* Font size for very small screens */
-  }
+  font-size: 4rem;
+  text-align: center;
 `;
 
 const GetStartedLink = styled(Link)`
   display: inline-block;
-  background-color: #c89f9c;
+  background-color: ${colors.primary};
   border: none;
   border-radius: 8px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
   color: white;
   cursor: pointer;
-  font-size: 16px;
   padding: 12px 24px;
-  text-decoration: none; /* Remove underline */
-  text-align: center;
+  text-decoration: none;
   transition: background-color 0.3s ease, transform 0.2s ease;
 
   &:hover {
-    background-color: #d7b7b0;
-  }
-
-  &:active {
-    transform: scale(0.98);
+    background-color: ${colors.secondary};
   }
 `;
 
 const Home: React.FC = () => {
-  const handleClick = () => {
-    alert("Button clicked!");
-  };
-
   return (
     <>
       <BackgroundGlobalStyle />

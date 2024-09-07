@@ -1,36 +1,19 @@
-// types.ts
+import { SiteDiaryEntry } from "./types";
 
-interface Visitor {
-  type: string;
-  organization?: string;
-  person?: string;
-  date: string;
-}
-
-interface Resources {
-  laborers?: number;
-  cranes?: number;
-  materials?: string[];
-  machinery?: string[];
-}
-
-interface SiteDiaryEntry {
-  id: string;
-  date: string;
-  title: string;
-  workProgress: string;
-  weatherConditions: string;
-  resources: Resources;
-  incidents: string;
-  visitors: Visitor[];
-  instructions: string;
-}
+export const colors = {
+  white: "#FFFFFF",
+  lightest: "#EEE2DF",
+  lighter: "#EED7C5",
+  primary: "#C89F9C",
+  secondary: "#C97C5D",
+  dark: "#B36A5E",
+};
 
 export const siteDiary: SiteDiaryEntry[] = [
   {
-    id: "2024-09-01-fnd-exc",
+    id: "5",
     date: "2024-09-01",
-    title: "Foundation Excavation and Steel Erection",
+    title: "Foundation Excavation",
     workProgress:
       "Foundation excavation completed; structural steel erection at 50%.",
     weatherConditions: "Sunny with temperatures between 22°C and 28°C.",
@@ -58,7 +41,7 @@ export const siteDiary: SiteDiaryEntry[] = [
       "Ensure additional safety barriers are installed around excavation areas.",
   },
   {
-    id: "2024-09-02-con-pou",
+    id: "4",
     date: "2024-09-02",
     title: "Concrete Pouring and Rain Delays",
     workProgress:
@@ -83,7 +66,7 @@ export const siteDiary: SiteDiaryEntry[] = [
       "Adjust concrete pouring schedule to accommodate weather conditions.",
   },
   {
-    id: "2024-09-03-ele-plu",
+    id: "3",
     date: "2024-09-03",
     title: "Electrical and Plumbing Installations",
     workProgress:
@@ -109,7 +92,7 @@ export const siteDiary: SiteDiaryEntry[] = [
       "Coordinate with electrical and plumbing teams to ensure installation compatibility.",
   },
   {
-    id: "2024-09-04-int-fra",
+    id: "2",
     date: "2024-09-04",
     title: "Interior Framing and Drywall",
     workProgress:
@@ -135,7 +118,7 @@ export const siteDiary: SiteDiaryEntry[] = [
       "Review interior design changes with the team and adjust framing plans as needed.",
   },
   {
-    id: "2024-09-05-dry-ins",
+    id: "1",
     date: "2024-09-05",
     title: "Drywall Installation and Inspection",
     workProgress:
