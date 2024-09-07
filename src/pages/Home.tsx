@@ -5,6 +5,7 @@ import styled, { createGlobalStyle } from "styled-components";
 //TODO: Change colours to use hash
 //TODO: Create constants for mobile / small screen sizes
 //TODO: Add semantic headings etc h1, h2, h3 etc
+//TODO: Maybe use REM instead of PX
 const BackgroundGlobalStyle = createGlobalStyle`
   body, html {
     margin: 0;

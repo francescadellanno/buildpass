@@ -17,7 +17,7 @@ root.render(
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/diary-entries" element={<DiaryEntries />} />
-        <Route path="/diary-entry" element={<DiaryEntry />} />
+        <Route path="/diary-entry/:date/:id" element={<DiaryEntry />} />
         <Route path="/add-diary-entry" element={<DiaryEntries />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
