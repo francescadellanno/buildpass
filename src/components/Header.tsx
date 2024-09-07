@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { colors } from "../constants";
+import { breakpoints, colors } from "../constants";
 
 const HeaderWrapper = styled.div`
   display: flex;
@@ -10,6 +10,10 @@ const HeaderWrapper = styled.div`
   border-bottom: 1px solid ${colors.dark};
   padding: 1rem;
   margin-bottom: 1.5rem;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    flex-direction: column;
+  }
 `;
 
 const Heading = styled.div`

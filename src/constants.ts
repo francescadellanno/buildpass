@@ -1,5 +1,12 @@
 import { SiteDiaryEntry } from "./types";
 
+// TODO: Might not need all of these breakpoints
+export const breakpoints = {
+  desktop: "1200px",
+  tablet: "768px",
+  mobile: "480px",
+};
+
 export const colors = {
   white: "#FFFFFF",
   lightest: "#EEE2DF",
