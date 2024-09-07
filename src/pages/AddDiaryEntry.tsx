@@ -12,6 +12,7 @@ import styled, { createGlobalStyle } from "styled-components";
 import Header from "../components/Header";
 import DiaryLayout from "../components/DiaryLayout";
 import SubmitButton from "../components/add-diary-entry/SubmitButton";
+import { supabase } from "../supabaseClient";
 
 const BackgroundGlobalStyle = createGlobalStyle`
   body, html {
@@ -64,36 +65,39 @@ const SiteDiaryForm: React.FC = () => {
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
   const [weatherConditions, setWeatherConditions] = useState(weatherOptions[0]);
-  const [image, setImage] = useState<File | null>(null);
+  const [image, setImage] = useState<string | null>(null);
   const [resources, setResources] = useState<Resource[]>([initialResource]);
   const [visitors, setVisitors] = useState<Visitor[]>([initialVisitor]);
 
   const handleImageUpload = async (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
+    console.log("$$before that!");
     const file = event.target.files?.[0];
-    if (file) {
-      const formData = new FormData();
-      formData.append("file", file);
+    console.log("$$file", file);
+    // Check if a file was uploaded
+    if (!file) return;
 
-      try {
-        const response = await axios.post(
-          "https://api.uploadthing.com/upload",
-          formData,
-          {
-            headers: {
-              Authorization: `Bearer YOUR_UPLOADTHING_API_KEY`,
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
+    // Generate a unique file name
+    const fileName = `${Date.now()}_${file.name}`;
 
-        console.log("Image uploaded:", response.data);
-        // Save the image URL in state or send it to Supabase
-      } catch (error) {
-        console.error("Error uploading image:", error);
-      }
+    // Upload the file to Supabase Storage
+    const { data, error } = await supabase.storage
+      .from("buildpass-coding-test-bucket") // Replace with your Supabase bucket name
+      .upload(fileName, file);
+
+    if (error) {
+      console.error("Error uploading file:", error.message);
+      return null;
     }
+    // Get the public URL of the uploaded file
+    const {
+      data: { publicUrl },
+    } = supabase.storage
+      .from("buildpass-coding-test-bucket")
+      .getPublicUrl(fileName);
+    console.log("$$public url:", publicUrl);
+    setImage(publicUrl);
   };
 
   const handleResourceChange = (
@@ -134,10 +138,34 @@ const SiteDiaryForm: React.FC = () => {
     setVisitors(newVisitors);
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     // Handle form submission
-    console.log({ date, description, weatherConditions, resources, visitors });
+    console.log({
+      title,
+      date,
+      description,
+      weatherConditions,
+      resources,
+      visitors,
+      image,
+    });
+
+    const { data, error } = await supabase
+      .from("BuildPass Site Diary")
+      .insert([
+        {
+          title,
+          date,
+          description,
+          weather: weatherConditions,
+          resources,
+          visitors,
+          // { instructions },
+          image,
+        },
+      ])
+      .select();
   };
 
   return (

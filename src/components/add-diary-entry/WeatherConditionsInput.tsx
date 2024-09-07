@@ -24,14 +24,14 @@ const Label = styled.label`
 const Select = styled.select`
   color: ${colors.dark};
   padding: 8px 12px;
-  border: 1px solid ${colors.dark}
+  border: 1px solid ${colors.dark};
   border-radius: 4px;
   font-size: 1rem;
   transition: border-color 0.3s;
   outline: none;
 
   &:focus {
-    border-color: #007bff;
+    border-color: blue;
   }
 `;
 
