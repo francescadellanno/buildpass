@@ -9,9 +9,10 @@ const HeaderWrapper = styled.div`
   justify-content: space-between;
   border-bottom: 1px solid ${colors.dark};
   padding: 1rem;
+  flex-direction: column;
 
-  @media (max-width: ${breakpoints.tablet}) {
-    flex-direction: column;
+  @media (min-width: ${breakpoints.tablet}) {
+    flex-direction: row;
   }
 `;
 
@@ -48,7 +49,7 @@ const HeaderLink = styled(Link)`
   }
 `;
 
-// TODO: Make selected header link underlined
+// TODO: Make selected header link underlined or bold
 
 const Header: React.FC = () => {
   return (

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
 import { colors } from "../constants";
 
+// TODO: Modify to be mobile first
 //TODO: Change colours to use hash
 //TODO: Create constants for mobile / small screen sizes
 //TODO: Add semantic headings etc h1, h2, h3 etc
