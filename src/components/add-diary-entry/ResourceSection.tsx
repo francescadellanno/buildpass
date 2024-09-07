@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { colors } from "../../constants";
 
 interface Resource {
   type: string;
@@ -21,9 +22,9 @@ const Container = styled.div`
 `;
 
 const Title = styled.h3`
-  font-size: 18px;
-  font-weight: 600;
-  color: #333;
+  font-weight: bold;
+  color: ${colors.dark};
+  font-size: 1.25rem;
   margin-bottom: 12px;
 `;
 
@@ -33,9 +34,9 @@ const ResourceGroup = styled.div`
   gap: 12px;
   margin-bottom: 16px;
   padding: 12px;
-  border: 1px solid #ddd;
+  border: 1px solid ${colors.dark};
   border-radius: 8px;
-  background-color: #f9f9f9;
+  background-color: ${colors.lighter};
 `;
 
 const InputBlock = styled.div`
@@ -45,35 +46,29 @@ const InputBlock = styled.div`
 `;
 
 const Label = styled.label`
-  font-size: 14px;
-  font-weight: 500;
-  color: #555;
+  color: ${colors.dark};
+  font-size: 1rem;
 `;
 
 const Input = styled.input`
   padding: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid ${colors.dark};
   border-radius: 4px;
   font-size: 16px;
-  transition: border-color 0.3s;
-
-  &:focus {
-    border-color: #007bff;
-  }
 `;
 
 const Button = styled.button`
   padding: 8px 16px;
   border: none;
   border-radius: 4px;
-  background-color: #007bff;
+  background-color: ${colors.dark};
   color: white;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: #0056b3;
+    background-color: ${colors.primary};
   }
 
   & + & {

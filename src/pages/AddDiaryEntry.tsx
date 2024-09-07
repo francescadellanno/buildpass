@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import axios from "axios";
-import { colors, weatherOptions } from "../constants";
+import { breakpoints, colors, weatherOptions } from "../constants";
 import TitleInput from "../components/add-diary-entry/TitleInput";
 import DateInput from "../components/add-diary-entry/DateInput";
 import DescriptionInput from "../components/add-diary-entry/DescriptionInput";
@@ -8,7 +8,7 @@ import WeatherConditionsInput from "../components/add-diary-entry/WeatherConditi
 import ImageUpload from "../components/add-diary-entry/ImageUpload";
 import ResourceSection from "../components/add-diary-entry/ResourceSection";
 import VisitorSection from "../components/add-diary-entry/VisitorSection";
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import Header from "../components/Header";
 import DiaryLayout from "../components/DiaryLayout";
 import SubmitButton from "../components/add-diary-entry/SubmitButton";
@@ -22,6 +22,16 @@ const BackgroundGlobalStyle = createGlobalStyle`
 
   #root {
     height: 100%;
+  }
+`;
+
+const InputGroupWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: ${breakpoints.tablet}) {
+    flex-direction: row;
+    justify-content: space-between;
   }
 `;
 
@@ -136,17 +146,20 @@ const SiteDiaryForm: React.FC = () => {
       <Header />
       <DiaryLayout>
         <form onSubmit={handleSubmit}>
-          <TitleInput title={title} setTitle={setTitle} />
-          <DateInput date={date} setDate={setDate} />
+          <InputGroupWrapper>
+            <TitleInput title={title} setTitle={setTitle} />
+            <DateInput date={date} setDate={setDate} />
+            <WeatherConditionsInput
+              weatherConditions={weatherConditions}
+              setWeatherConditions={setWeatherConditions}
+              weatherOptions={weatherOptions}
+            />
+          </InputGroupWrapper>
           <DescriptionInput
             description={description}
             setDescription={setDescription}
           />
-          <WeatherConditionsInput
-            weatherConditions={weatherConditions}
-            setWeatherConditions={setWeatherConditions}
-            weatherOptions={weatherOptions}
-          />
+
           <ImageUpload handleImageUpload={handleImageUpload} />
           <ResourceSection
             resources={resources}

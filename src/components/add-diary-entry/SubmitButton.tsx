@@ -1,18 +1,18 @@
 import styled from "styled-components";
+import { colors } from "../../constants";
 
 const SubmitButton = styled.button`
   padding: 10px 20px;
   border: none;
   border-radius: 6px;
-  background-color: #007bff; /* Primary color */
-  color: #fff; /* Text color */
+  background-color: ${colors.dark};
+  color: ${colors.white}; /* Text color */
   font-size: 16px;
-  font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s, box-shadow 0.3s;
 
   &:hover {
-    background-color: #0056b3; /* Darker shade for hover */
+    background-color: ${colors.primary};
   }
 
   &:active {

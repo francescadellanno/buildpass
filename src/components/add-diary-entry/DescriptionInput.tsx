@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { colors } from "../../constants";
 
 interface DescriptionInputProps {
   description: string;
@@ -14,24 +15,19 @@ const Container = styled.div`
 `;
 
 const Label = styled.label`
-  font-weight: 600;
-  color: #333;
-  font-size: 14px;
+  font-weight: bold;
+  color: ${colors.dark};
+  font-size: 1.25rem;
 `;
 
 const Textarea = styled.textarea`
   padding: 12px;
-  border: 1px solid #ccc;
+  border: 1px solid ${colors.dark};
   border-radius: 4px;
-  font-size: 16px;
+  font-size: 1rem;
   resize: vertical;
   min-height: 100px;
-  transition: border-color 0.3s;
   outline: none;
-
-  &:focus {
-    border-color: #007bff;
-  }
 `;
 
 const DescriptionInput: React.FC<DescriptionInputProps> = ({
