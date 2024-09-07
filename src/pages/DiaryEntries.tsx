@@ -38,9 +38,9 @@ const EntryLink = styled(Link)`
 const DiaryEntries: React.FC = () => {
   return (
     <>
+      <BackgroundGlobalStyle />
       <Header />
       <DiaryLayout>
-        <BackgroundGlobalStyle />
         <EntryList>
           {siteDiary.map((entry) => (
             <EntryLink key={entry.id} to={`/diary-entry/entry/${entry.id}`}>

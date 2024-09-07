@@ -33,9 +33,9 @@ const DiaryEntry: React.FC = () => {
 
   return (
     <>
+      <BackgroundGlobalStyle />
       <Header />
       <DiaryLayout>
-        <BackgroundGlobalStyle />
         <div>
           <BackButton text="Reports" path="/diary-entries" />
         </div>

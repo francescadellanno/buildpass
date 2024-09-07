@@ -16,6 +16,14 @@ export const colors = {
   dark: "#B36A5E",
 };
 
+export const weatherOptions = [
+  "Sunny",
+  "Cloudy",
+  "Overcast",
+  "Rainy",
+  "Stormy",
+];
+
 // TODO: Go through all unused fields
 
 export const siteDiary: SiteDiaryEntry[] = [
@@ -23,7 +31,7 @@ export const siteDiary: SiteDiaryEntry[] = [
     id: "5",
     date: "2024-09-01",
     title: "Foundation Excavation",
-    workProgress:
+    description:
       "Foundation excavation completed; structural steel erection at 50%.",
     weatherConditions: "Sunny with temperatures between 22°C and 28°C.",
     resources: [
@@ -65,7 +73,7 @@ export const siteDiary: SiteDiaryEntry[] = [
     id: "4",
     date: "2024-09-02",
     title: "Concrete Pouring and Rain Delays",
-    workProgress:
+    description:
       "Structural steel installation completed; concrete pouring for floors in progress.",
     weatherConditions: "Overcast with light rain; temperatures around 18°C.",
     resources: [
@@ -102,7 +110,7 @@ export const siteDiary: SiteDiaryEntry[] = [
     id: "3",
     date: "2024-09-03",
     title: "Electrical and Plumbing Installations",
-    workProgress:
+    description:
       "Concrete floors cured; electrical and plumbing rough-ins started.",
     weatherConditions:
       "Partly cloudy with temperatures ranging from 20°C to 25°C.",
@@ -140,7 +148,7 @@ export const siteDiary: SiteDiaryEntry[] = [
     id: "2",
     date: "2024-09-04",
     title: "Interior Framing and Drywall",
-    workProgress:
+    description:
       "Interior wall framing completed; drywall installation underway.",
     weatherConditions: "Clear skies with temperatures between 23°C and 30°C.",
     resources: [
@@ -178,7 +186,7 @@ export const siteDiary: SiteDiaryEntry[] = [
     id: "1",
     date: "2024-09-05",
     title: "Drywall Installation and Inspection",
-    workProgress:
+    description:
       "Interior wall framing completed; drywall installation underway.",
     weatherConditions: "Sunny with temperatures around 25°C.",
     resources: [

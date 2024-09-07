@@ -14,7 +14,7 @@ export interface SiteDiaryEntry {
   id: string;
   date: string;
   title: string;
-  workProgress: string;
+  description: string;
   weatherConditions: string;
   resources: Resources[];
   incidents: string;

@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import DiaryEntries from "./pages/DiaryEntries";
 import DiaryEntry from "./pages/DiaryEntry";
+import AddDiaryEntry from "./pages/AddDiaryEntry";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -18,7 +19,7 @@ root.render(
         <Route path="/" element={<Home />} />
         <Route path="/diary-entries" element={<DiaryEntries />} />
         <Route path="/diary-entry/entry/:id" element={<DiaryEntry />} />
-        <Route path="/add-diary-entry" element={<DiaryEntries />} />
+        <Route path="/add-diary-entry" element={<AddDiaryEntry />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

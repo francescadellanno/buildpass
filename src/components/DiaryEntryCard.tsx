@@ -53,8 +53,8 @@ const DiaryEntryCard: React.FC<{
       {!compressed && (
         <Content>
           <DiaryEntryBlock
-            title="Work Progress"
-            description={entry.workProgress}
+            title="Description"
+            description={entry.description}
           />
           <DiaryEntryBlock
             title="Weather Conditions"
