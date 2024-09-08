@@ -25,7 +25,7 @@ const DiaryEntry: React.FC = () => {
           <Button arrow text="Back" path="/diary-entries" />
         </ButtonWrapper>
         {loading && <LoadingAnimation text="Loading diary entry..." />}
-        {!loading && !diaryEntry && (
+        {!loading && !error && !diaryEntry && (
           <Card>
             Uh oh! It looks like the diary entry you were looking for doesn't
             exist.
