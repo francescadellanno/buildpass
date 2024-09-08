@@ -27,6 +27,13 @@ const BackgroundGlobalStyle = createGlobalStyle`
   }
 `;
 
+const SpinnerWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+`;
+
 const InputGroupWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -76,17 +83,20 @@ const SiteDiaryForm: React.FC = () => {
     <>
       <BackgroundGlobalStyle />
       <Header />
-
       <DiaryLayout>
-        {loading && <Spinner />}
-        {successMessage && uniqueId && (
+        {loading && (
+          <SpinnerWrapper>
+            <Spinner />
+          </SpinnerWrapper>
+        )}
+        {!loading && successMessage && uniqueId && (
           <StatusUpdateCard
             heading="Success!"
             message={successMessage}
             uniqueId={uniqueId}
           />
         )}
-        {errorMessage && (
+        {!loading && errorMessage && (
           <StatusUpdateCard
             heading="Uh oh! Looks like something went wrong."
             message={errorMessage}

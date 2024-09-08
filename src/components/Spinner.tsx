@@ -2,6 +2,24 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 import { colors } from "../constants";
 
+const SpinnerWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 20px;
+  margin: 4rem 0;
+
+  background-color: ${colors.white};
+  border: 2px solid ${colors.primary};
+  border-radius: 16px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  color: ${colors.dark};
+  padding: 30px 60px 30px 30px;
+  font-size: 1rem;
+`;
+
 // Keyframes for bouncing animation
 const bounce = keyframes`
   0%, 100% {
@@ -44,13 +62,21 @@ const Ball = styled.div<{ delay: string }>`
   animation-delay: ${({ delay }) => delay};
 `;
 
-// Spinner component
+const Text = styled.div`
+  font-size: 1.5rem;
+  color: ${colors.dark};
+  padding-left: 30px;
+`;
+
 const Spinner = () => (
-  <SpinnerContainer>
-    <Ball delay="0s" />
-    <Ball delay="0.2s" />
-    <Ball delay="0.4s" />
-  </SpinnerContainer>
+  <SpinnerWrapper>
+    <SpinnerContainer>
+      <Ball delay="0s" />
+      <Ball delay="0.2s" />
+      <Ball delay="0.4s" />
+    </SpinnerContainer>
+    <Text>Uploading...</Text>
+  </SpinnerWrapper>
 );
 
 export default Spinner;
