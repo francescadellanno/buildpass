@@ -1,20 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styled, { createGlobalStyle } from "styled-components";
-import { colors } from "../constants";
+import styled from "styled-components";
+import { BackgroundGlobalStyle, colors } from "../constants";
 import Header from "../components/Header";
-
-const BackgroundGlobalStyle = createGlobalStyle`
-  body, html {
-    margin: 0;
-    height: 100%;
-    background-color: ${colors.lightest};
-  }
-
-  #root {
-    height: 100%;
-  }
-`;
 
 const HomeWrapper = styled.div`
   align-items: center;

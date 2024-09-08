@@ -1,12 +1,17 @@
 import React from "react";
-import { breakpoints, colors, weatherOptions } from "../constants";
+import {
+  BackgroundGlobalStyle,
+  breakpoints,
+  colors,
+  weatherOptions,
+} from "../constants";
 import DateInput from "../components/add-diary-entry/DateInput";
 import DescriptionInput from "../components/add-diary-entry/DescriptionInput";
 import WeatherConditionsInput from "../components/add-diary-entry/WeatherConditionsInput";
 import ImageUpload from "../components/add-diary-entry/ImageUpload";
 import ResourceSection from "../components/add-diary-entry/ResourceSection";
 import VisitorSection from "../components/add-diary-entry/VisitorSection";
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 import Header from "../components/Header";
 import DiaryLayout from "../components/DiaryLayout";
 import SubmitButton from "../components/add-diary-entry/SubmitButton";
@@ -14,18 +19,6 @@ import useSiteDiaryForm from "../hooks/useSiteDiaryForm";
 import TextInput from "../components/add-diary-entry/TextInput";
 import Spinner from "../components/Spinner";
 import UploadStatusCard from "../components/UploadStatusCard";
-
-const BackgroundGlobalStyle = createGlobalStyle`
-  body, html {
-    margin: 0;
-    height: 100%;
-    background-color: ${colors.lightest};
-  }
-
-  #root {
-    height: 100%;
-  }
-`;
 
 const HeadingText = styled.h1`
   color: ${colors.dark};

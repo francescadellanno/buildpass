@@ -3,9 +3,9 @@ import {
   SUPABASE_BUCKET_NAME,
   SUPABASE_TABLE_NAME,
   weatherOptions,
-} from "../constants";
-import { supabase } from "../supabaseClient";
-import { clearCache } from "./useGetAllDiaryEntries";
+} from "./constants";
+import { supabase } from "./supabaseClient";
+import { clearCache } from "./hooks/useGetAllDiaryEntries";
 
 interface Resource {
   type: string;
@@ -54,7 +54,7 @@ const useSiteDiaryForm = () => {
 
     const fileName = `${Date.now()}_${file.name}`;
 
-    const { error } = await supabase.storage
+    const { data, error } = await supabase.storage
       .from(SUPABASE_BUCKET_NAME)
       .upload(fileName, file);
 
@@ -155,7 +155,7 @@ const useSiteDiaryForm = () => {
       setSuccessMessage(`Diary entry "${title}" submitted successfully!`);
       resetForm();
       setUniqueId(data?.[0]?.id);
-      // Clear the cache for all diary entries after successful update
+      // Clear the cache after successful update
       clearCache();
     }
   };

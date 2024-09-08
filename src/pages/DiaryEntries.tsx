@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styled, { createGlobalStyle } from "styled-components";
-import { colors } from "../constants";
+import styled from "styled-components";
+import { BackgroundGlobalStyle, colors } from "../constants";
 import DiaryEntryCard from "../components/DiaryEntryCard";
 import DiaryLayout from "../components/DiaryLayout";
 import Header from "../components/Header";
-import useSupabaseData from "../hooks/useSupabaseData";
+import useGetAllDiaryEntries from "../hooks/useGetAllDiaryEntries";
 import Spinner from "../components/Spinner";
 import Card from "../components/Card";
 import UploadStatusCard from "../components/UploadStatusCard";
@@ -13,18 +13,6 @@ import UploadStatusCard from "../components/UploadStatusCard";
 const HeadingText = styled.h1`
   color: ${colors.dark};
   margin: 0 0 20px 0;
-`;
-
-const BackgroundGlobalStyle = createGlobalStyle`
-  body, html {
-    margin: 0;
-    height: 100%;
-    background-color: ${colors.lightest};
-  }
-
-  #root {
-    height: 100%;
-  }
 `;
 
 const EntryList = styled.section`
@@ -45,7 +33,7 @@ const EntryLink = styled(Link)`
 `;
 
 const DiaryEntries: React.FC = () => {
-  const { data, loading, error } = useSupabaseData();
+  const { diaryEntries, loading, error } = useGetAllDiaryEntries();
 
   return (
     <>
@@ -54,22 +42,26 @@ const DiaryEntries: React.FC = () => {
       <DiaryLayout>
         <HeadingText>Your Diary Entries</HeadingText>
         {loading && <Spinner text="Loading diary entries..." />}
-        {!loading && !error && data.length > 0 && (
+        {diaryEntries.length > 0 && (
           <EntryList>
-            {data.map((entry) => (
-              <EntryLink key={entry.id} to={`/diary-entries/${entry.id}`}>
-                <DiaryEntryCard compressed entry={entry} />
+            {diaryEntries.map((diaryEntry) => (
+              <EntryLink
+                key={diaryEntry.id}
+                to={`/diary-entries/${diaryEntry.id}`}
+              >
+                <DiaryEntryCard compressed diaryEntry={diaryEntry} />
               </EntryLink>
             ))}
           </EntryList>
         )}
-        {!loading && !error && data.length === 0 && (
-          <>
-            <UploadStatusCard message="No diary entries yet, why not add one?" />
-          </>
+        {!loading && !error && diaryEntries.length === 0 && (
+          <UploadStatusCard message="No diary entries yet, why not add one?" />
         )}
         {error && (
-          <Card>Error loading diary entries, please try again later. </Card>
+          <Card>
+            <div>Oops! We couldn't load your diary entries at the moment.</div>
+            <div>Please try refreshing the page or check back later.</div>
+          </Card>
         )}
       </DiaryLayout>
     </>

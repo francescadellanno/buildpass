@@ -32,9 +32,9 @@ const Heading = styled.div`
 `;
 
 const DiaryEntryCard: React.FC<{
-  entry: SiteDiaryEntry;
+  diaryEntry: SiteDiaryEntry;
   compressed?: boolean;
-}> = ({ entry, compressed = false }) => {
+}> = ({ diaryEntry, compressed = false }) => {
   const {
     date,
     description,
@@ -45,7 +45,7 @@ const DiaryEntryCard: React.FC<{
     visitors,
     weather,
     resources,
-  } = entry;
+  } = diaryEntry;
 
   const visitorCategories =
     visitors?.map(

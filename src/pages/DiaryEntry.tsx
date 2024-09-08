@@ -1,34 +1,20 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import styled, { createGlobalStyle } from "styled-components";
-import { colors } from "../constants";
+import styled from "styled-components";
+import { BackgroundGlobalStyle } from "../constants";
 import DiaryEntryCard from "../components/DiaryEntryCard";
 import DiaryLayout from "../components/DiaryLayout";
 import Header from "../components/Header";
 import Button from "../components/Button";
-import useSupabaseData from "../hooks/useSupabaseData";
 import Card from "../components/Card";
-
-const BackgroundGlobalStyle = createGlobalStyle`
-  body, html {
-    margin: 0;
-    height: 100%;
-    background-color: ${colors.lightest};
-  }
-
-  #root {
-    height: 100%;
-  }
-`;
+import useGetDiaryEntryById from "../hooks/useGetDiaryEntryById";
+import Spinner from "../components/Spinner";
 
 const ButtonWrapper = styled.div`
   margin-bottom: 20px;
 `;
 
 const DiaryEntry: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
-  const { data, loading, error } = useSupabaseData();
-  const entry = data.find((entry) => entry.id === id);
+  const { diaryEntry, loading, error } = useGetDiaryEntryById();
 
   return (
     <>
@@ -38,13 +24,20 @@ const DiaryEntry: React.FC = () => {
         <ButtonWrapper>
           <Button arrow text="Back" path="/diary-entries" />
         </ButtonWrapper>
-        {!entry && (
+        {loading && <Spinner text="Loading diary entry..." />}
+        {!diaryEntry && (
           <Card>
-            Uh oh! Looks like the diary entry you were looking for doesn't exist
-            anymore.
+            Uh oh! It looks like the diary entry you were looking for doesn't
+            exist.
           </Card>
         )}
-        {entry && <DiaryEntryCard entry={entry} />}
+        {diaryEntry && <DiaryEntryCard diaryEntry={diaryEntry} />}
+        {error && (
+          <Card>
+            <div>Oops! We couldn't load your diary entry at the moment.</div>
+            <div>Please try refreshing the page or check back later.</div>
+          </Card>
+        )}
       </DiaryLayout>
     </>
   );

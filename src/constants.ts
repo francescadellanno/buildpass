@@ -1,3 +1,5 @@
+import { createGlobalStyle } from "styled-components";
+
 export const SUPABASE_TABLE_NAME = "BuildPass Site Diary";
 export const SUPABASE_BUCKET_NAME = "buildpass-coding-test-bucket";
 
@@ -24,3 +26,15 @@ export const weatherOptions = [
   "Rainy",
   "Stormy",
 ];
+
+export const BackgroundGlobalStyle = createGlobalStyle`
+  body, html {
+    margin: 0;
+    height: 100%;
+    background-color: ${colors.lightest};
+  }
+
+  #root {
+    height: 100%;
+  }
+`;
