@@ -38,7 +38,6 @@ const move = keyframes`
   }
 `;
 
-// Styled component for the spinner
 const SpinnerContainer = styled.div`
   display: flex;
   justify-content: space-between;

@@ -46,7 +46,7 @@ const InputBlock = styled.div`
   flex-direction: column;
   gap: 4px;
   width: 100%;
-  box-sizing: border-box; /* Ensure consistent sizing */
+  box-sizing: border-box;
 `;
 
 const Label = styled.label`
