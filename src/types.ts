@@ -20,5 +20,5 @@ export interface SiteDiaryEntry {
   incidents: string;
   visitors: Visitor[];
   instructions: string;
-  imagePath: string;
+  image: string;
 }

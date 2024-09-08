@@ -74,7 +74,7 @@ export const siteDiary: SiteDiaryEntry[] = [
     ],
     instructions:
       "Ensure additional safety barriers are installed around excavation areas.",
-    imagePath:
+    image:
       "https://zclisrjawalimjftomem.supabase.co/storage/v1/object/public/buildpass-coding-test-bucket/1725754908145_corgi-pic.jpg",
   },
   {
@@ -113,7 +113,7 @@ export const siteDiary: SiteDiaryEntry[] = [
     ],
     instructions:
       "Adjust concrete pouring schedule to accommodate weather conditions.",
-    imagePath:
+    image:
       "https://zclisrjawalimjftomem.supabase.co/storage/v1/object/public/buildpass-coding-test-bucket/1725754908145_corgi-pic.jpg",
   },
   {
@@ -153,7 +153,7 @@ export const siteDiary: SiteDiaryEntry[] = [
     ],
     instructions:
       "Coordinate with electrical and plumbing teams to ensure installation compatibility.",
-    imagePath:
+    image:
       "https://zclisrjawalimjftomem.supabase.co/storage/v1/object/public/buildpass-coding-test-bucket/1725754908145_corgi-pic.jpg",
   },
   {
@@ -193,7 +193,7 @@ export const siteDiary: SiteDiaryEntry[] = [
     ],
     instructions:
       "Review interior design changes with the team and adjust framing plans as needed.",
-    imagePath:
+    image:
       "https://zclisrjawalimjftomem.supabase.co/storage/v1/object/public/buildpass-coding-test-bucket/1725754908145_corgi-pic.jpg",
   },
   {
@@ -232,7 +232,7 @@ export const siteDiary: SiteDiaryEntry[] = [
     ],
     instructions:
       "Prepare for upcoming inspections by ensuring all framing and drywall work is up to code.",
-    imagePath:
+    image:
       "https://zclisrjawalimjftomem.supabase.co/storage/v1/object/public/buildpass-coding-test-bucket/1725754908145_corgi-pic.jpg",
   },
 ];

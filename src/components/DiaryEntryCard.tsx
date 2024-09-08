@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { SiteDiaryEntry } from "../types";
 import DiaryEntryBlock from "./DiaryEntryBlock";
 import Card from "./Card";
+import ResponsiveImage from "./ResponsiveImage";
 
 // TODO: Go through h1, h2, h3, h4, h5, h6 and make sure they are styled correctly
 
@@ -25,6 +26,11 @@ const Content = styled.div`
 
 const Date = styled.div`
   margin: 10px;
+`;
+
+const Heading = styled.div`
+  font-weight: bold;
+  text-align: left;
 `;
 
 // Date, description, weather, image
@@ -60,6 +66,9 @@ const DiaryEntryCard: React.FC<{
             description={entry.instructions}
           />
           <DiaryEntryBlock title="Resources" description={resourceCategories} />
+          {/* TODO could make image  and image url the same name */}
+          <Heading>Site Image</Heading>
+          <ResponsiveImage imageUrl={entry.image} />
         </Content>
       )}
     </DiaryEntryCardWrapper>

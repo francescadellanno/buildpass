@@ -63,14 +63,14 @@ const Text = styled.div`
   padding-left: 30px;
 `;
 
-const Spinner = () => (
+const Spinner = ({ text }: { text: string }) => (
   <SpinnerWrapper>
     <SpinnerContainer>
       <Ball delay="0s" />
       <Ball delay="0.2s" />
       <Ball delay="0.4s" />
     </SpinnerContainer>
-    <Text>Uploading...</Text>
+    <Text>{text}</Text>
   </SpinnerWrapper>
 );
 

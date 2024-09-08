@@ -27,6 +27,11 @@ const BackgroundGlobalStyle = createGlobalStyle`
   }
 `;
 
+const HeadingText = styled.h1`
+  color: ${colors.dark};
+  margin: 0 0 20px 0;
+`;
+
 const SpinnerWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -84,9 +89,10 @@ const SiteDiaryForm: React.FC = () => {
       <BackgroundGlobalStyle />
       <Header />
       <DiaryLayout>
+        <HeadingText>Add Diary Entry</HeadingText>
         {loading && (
           <SpinnerWrapper>
-            <Spinner />
+            <Spinner text="Submitting..." />
           </SpinnerWrapper>
         )}
         {!loading && successMessage && uniqueId && (

@@ -6,6 +6,8 @@ import DiaryEntryCard from "../components/DiaryEntryCard";
 import DiaryLayout from "../components/DiaryLayout";
 import Header from "../components/Header";
 import useSupabaseData from "../hooks/useSupabaseData";
+import Spinner from "../components/Spinner";
+import Card from "../components/Card";
 
 const HeadingText = styled.h1`
   color: ${colors.dark};
@@ -43,7 +45,6 @@ const EntryLink = styled(Link)`
 
 const DiaryEntries: React.FC = () => {
   const { data, loading, error } = useSupabaseData();
-  // I considered putting a loading spinner here while the data was loading but the network request is so fast that it's really not necessary
 
   return (
     <>
@@ -51,13 +52,18 @@ const DiaryEntries: React.FC = () => {
       <Header />
       <DiaryLayout>
         <HeadingText>Your Reports</HeadingText>
-        <EntryList>
-          {data.map((entry) => (
-            <EntryLink key={entry.id} to={`/diary-entry/${entry.id}`}>
-              <DiaryEntryCard compressed entry={entry} />
-            </EntryLink>
-          ))}
-        </EntryList>
+        {loading && <Spinner text="Loading reports..." />}
+        {!loading && !error && (
+          <EntryList>
+            {data.map((entry) => (
+              <EntryLink key={entry.id} to={`/diary-entry/${entry.id}`}>
+                <DiaryEntryCard compressed entry={entry} />
+              </EntryLink>
+            ))}
+          </EntryList>
+        )}
+        {/* TODO: Could generalise the status update component */}
+        {error && <Card>Error loading reports, please try again later. </Card>}
       </DiaryLayout>
     </>
   );
