@@ -10,11 +10,6 @@ const StatusUpdateCardWrapper = styled.div`
   gap: 16px;
 `;
 
-const HeadingText = styled.h1`
-  color: ${colors.dark};
-  margin: 0;
-`;
-
 const Message = styled(Card)`
   font-size: 1rem;
 `;
@@ -25,7 +20,7 @@ const ButtonWrapper = styled.div`
   gap: 16px;
 `;
 
-const StatusUpdateCard: React.FC<{
+const UploadStatusCard: React.FC<{
   message: string;
   uniqueId?: string;
 }> = ({ message, uniqueId }) => {
@@ -42,4 +37,4 @@ const StatusUpdateCard: React.FC<{
   );
 };
 
-export default StatusUpdateCard;
+export default UploadStatusCard;

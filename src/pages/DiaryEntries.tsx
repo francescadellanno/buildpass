@@ -8,7 +8,7 @@ import Header from "../components/Header";
 import useSupabaseData from "../hooks/useSupabaseData";
 import Spinner from "../components/Spinner";
 import Card from "../components/Card";
-import StatusUpdateCard from "../components/StatusUpdateCard";
+import UploadStatusCard from "../components/UploadStatusCard";
 
 const HeadingText = styled.h1`
   color: ${colors.dark};
@@ -65,7 +65,7 @@ const DiaryEntries: React.FC = () => {
         )}
         {!loading && !error && data.length === 0 && (
           <>
-            <StatusUpdateCard message="No diary entries yet, why not add one?" />
+            <UploadStatusCard message="No diary entries yet, why not add one?" />
           </>
         )}
         {error && (

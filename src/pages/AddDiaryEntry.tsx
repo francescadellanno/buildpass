@@ -13,7 +13,7 @@ import SubmitButton from "../components/add-diary-entry/SubmitButton";
 import useSiteDiaryForm from "../hooks/useSiteDiaryForm";
 import TextInput from "../components/add-diary-entry/TextInput";
 import Spinner from "../components/Spinner";
-import StatusUpdateCard from "../components/StatusUpdateCard";
+import UploadStatusCard from "../components/UploadStatusCard";
 
 const BackgroundGlobalStyle = createGlobalStyle`
   body, html {
@@ -94,10 +94,10 @@ const SiteDiaryForm: React.FC = () => {
           </SpinnerWrapper>
         )}
         {!loading && successMessage && uniqueId && (
-          <StatusUpdateCard message={successMessage} uniqueId={uniqueId} />
+          <UploadStatusCard message={successMessage} uniqueId={uniqueId} />
         )}
         {!loading && errorMessage && (
-          <StatusUpdateCard message={errorMessage} />
+          <UploadStatusCard message={errorMessage} />
         )}
         {showForm && (
           <form onSubmit={handleSubmit}>
