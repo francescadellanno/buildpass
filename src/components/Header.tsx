@@ -52,7 +52,6 @@ const HeaderLink = styled(Link)<{ isActive?: boolean }>`
   }
 `;
 
-// TODO: Fields not neccessarily null? Or even remove fields being required thats a bit annoying
 const Header: React.FC = () => {
   const location = useLocation();
 

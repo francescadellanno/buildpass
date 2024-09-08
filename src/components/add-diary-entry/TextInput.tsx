@@ -7,6 +7,7 @@ interface TextInputProps {
   value: string;
   setValue: (title: string) => void;
   id: string;
+  required?: boolean;
 }
 
 const Container = styled.div`
@@ -35,6 +36,7 @@ const TextInput: React.FC<TextInputProps> = ({
   labelText,
   value,
   setValue,
+  required,
 }) => (
   <Container>
     <Label htmlFor={id}>{labelText}</Label>
@@ -43,7 +45,7 @@ const TextInput: React.FC<TextInputProps> = ({
       id={id}
       value={value}
       onChange={(e) => setValue(e.target.value)}
-      required
+      required={required}
     />
   </Container>
 );

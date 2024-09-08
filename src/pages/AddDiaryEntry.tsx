@@ -51,7 +51,6 @@ const InputGroupWrapper = styled.div`
   }
 `;
 
-// TODO: Look into ununsed imports for hooks
 const SiteDiaryForm: React.FC = () => {
   const {
     title,
@@ -62,7 +61,6 @@ const SiteDiaryForm: React.FC = () => {
     setDescription,
     weather,
     setWeatherConditions,
-    imagePath,
     handleImageUpload,
     instructions,
     setInstructions,
@@ -109,6 +107,7 @@ const SiteDiaryForm: React.FC = () => {
                 labelText="Title"
                 value={title}
                 setValue={setTitle}
+                required
               />
               <DateInput date={date} setDate={setDate} />
               <WeatherConditionsInput

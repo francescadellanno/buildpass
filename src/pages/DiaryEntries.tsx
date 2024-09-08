@@ -68,7 +68,6 @@ const DiaryEntries: React.FC = () => {
             <StatusUpdateCard message="No diary entries yet, why not add one?" />
           </>
         )}
-        {/* TODO: Could generalise the status update component */}
         {error && (
           <Card>Error loading diary entries, please try again later. </Card>
         )}
