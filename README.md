@@ -1,46 +1,55 @@
-# Getting Started with Create React App
+# BuildPass Coding Test | Francesca Dell'Anno
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Running the project
 
-## Available Scripts
+1. Clone the repository
+2. Run `npm install`
+3. Run `npm start`
 
-In the project directory, you can run:
+## Overview
 
-### `npm start`
+This project is a simple construction site diary application built with React, TypeScript and Supabase. It allows users to view and add diary entries. Each diary entry can contain various details such as the title, date, description, weather conditions, incidents, visitors, instructions, resources and site photos. Given the importance on mobile use, I took a mobile first approach to building the application.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Set Up Process
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. Set up the project with Create React App and TypeScript. I also used Styled Components for styling.
+2. Set up Supabase for the database.
+3. Set up my environment. I used the Cursor (IDE with AI) as my code editor with Prettier, I updated my formatting preferences to my liking and setup syntax highlighting.
+4. Decided on a palette of colours which I generated on coolors.co.
+5. Set up my folder structure i.e. src, components, pages, hooks etc.
+6. I used custom hooks whenever suitable because I find these are a great way of structuring complex code.
 
-### `npm test`
+# AI tools
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Cursor IDE
 
-### `npm run build`
+I used the Cursor IDE to help me with code generation, debugging and documentation. This was my first time using Cursor and I found it to be an extremely useful tool. The tab autocomplete feature is ridiculously useful and saved me so much time. I also really liked the "fix with AI" feature where you can use inline AI suggested corrections in your code. This was particularly useful for errors. I really loved how Cursor would autocomplete my TypeScript types and if doing a repetitive task Cursor would predict what I wanted to do next. I felt like I was writing half of my code just by clicking the tab button.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Chat GPT
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+I heavily relied on Chat GPT for this test, I was determined to see how much I could do with AI assistance and that turned out to be a lot. It's memory of the code I've written before is extremely useful when following up with clarifying questions.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+I did so many things with Chat GPT however largely code generation as for most of my de-bugging I used the AI built into Cursor. Here are some examples of how I used Chat GPT (to name a few):
 
-### `npm run eject`
+- It provided me with mock data for my diary entries including a json and a csv file.
+- It provided me with a comparison of different types of databases. I specified that I wanted one which was very simple to implement and Supabase was the clear winner.
+- It provided me with the code for my form, I specified the fields needed and the field input types. I then asked it to make the form a bit prettier. I also asked it to refactor the code into different files as the main form file was huge.
+- It re-wrote my components using TypeScript.
+- It refactored my code into custom hooks.
+- It provided me with animations for my nav links, back button, cards.
+- It provided file name suggestions for my components.
+- It provided me with boilerplate code to fetch / upload data from / to Supabase.
+- It provided me with code to do caching.
+- It provided me with code for my responsive images
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+..etc.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Future Considerations
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- I would hire a designer to make the UI look nicer.
+- I would create a component to handle the loading / error states for my fetch requests.
+- Add caching to getDiaryEntryById as it currently only applies to getDiaryEntries.
+- I would add 'delete' functionality for my diary entries.
+- I would improve the security of my Supabase setup, utilise RLS and put my sensitive keys in environment variables.
+- Make the code more accessible e.g. for screen readers, check contrast issues, improve semantic HTML etc.
+- Add more unit / integration tests.
