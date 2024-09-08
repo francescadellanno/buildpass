@@ -7,7 +7,7 @@ import Header from "../components/Header";
 import Button from "../components/Button";
 import Card from "../components/Card";
 import useGetDiaryEntryById from "../hooks/useGetDiaryEntryById";
-import Spinner from "../components/Spinner";
+import LoadingAnimation from "../components/LoadingAnimation";
 
 const ButtonWrapper = styled.div`
   margin-bottom: 20px;
@@ -24,7 +24,7 @@ const DiaryEntry: React.FC = () => {
         <ButtonWrapper>
           <Button arrow text="Back" path="/diary-entries" />
         </ButtonWrapper>
-        {loading && <Spinner text="Loading diary entry..." />}
+        {loading && <LoadingAnimation text="Loading diary entry..." />}
         {!loading && !diaryEntry && (
           <Card>
             Uh oh! It looks like the diary entry you were looking for doesn't

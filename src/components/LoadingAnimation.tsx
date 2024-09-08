@@ -3,7 +3,7 @@ import styled, { keyframes } from "styled-components";
 import { colors } from "../constants";
 import Card from "./Card";
 
-const SpinnerWrapper = styled(Card)`
+const LoadingAnimationWrapper = styled(Card)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,7 +38,7 @@ const move = keyframes`
   }
 `;
 
-const SpinnerContainer = styled.div`
+const LoadingAnimationContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -62,15 +62,15 @@ const Text = styled.div`
   padding-left: 30px;
 `;
 
-const Spinner = ({ text }: { text: string }) => (
-  <SpinnerWrapper>
-    <SpinnerContainer>
+const LoadingAnimation = ({ text }: { text: string }) => (
+  <LoadingAnimationWrapper>
+    <LoadingAnimationContainer>
       <Ball delay="0s" />
       <Ball delay="0.2s" />
       <Ball delay="0.4s" />
-    </SpinnerContainer>
+    </LoadingAnimationContainer>
     <Text>{text}</Text>
-  </SpinnerWrapper>
+  </LoadingAnimationWrapper>
 );
 
-export default Spinner;
+export default LoadingAnimation;

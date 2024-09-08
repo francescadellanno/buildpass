@@ -17,7 +17,7 @@ import DiaryLayout from "../components/DiaryLayout";
 import SubmitButton from "../components/add-diary-entry/SubmitButton";
 import useSiteDiaryForm from "../hooks/useSiteDiaryForm";
 import TextInput from "../components/add-diary-entry/TextInput";
-import Spinner from "../components/Spinner";
+import LoadingAnimation from "../components/LoadingAnimation";
 import UploadStatusCard from "../components/UploadStatusCard";
 
 const HeadingText = styled.h1`
@@ -25,7 +25,7 @@ const HeadingText = styled.h1`
   margin: 0 0 20px 0;
 `;
 
-const SpinnerWrapper = styled.div`
+const LoadingAnimationWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -82,9 +82,9 @@ const SiteDiaryForm: React.FC = () => {
       <DiaryLayout>
         <HeadingText>Add Diary Entry</HeadingText>
         {loading && (
-          <SpinnerWrapper>
-            <Spinner text="Submitting..." />
-          </SpinnerWrapper>
+          <LoadingAnimationWrapper>
+            <LoadingAnimation text="Submitting..." />
+          </LoadingAnimationWrapper>
         )}
         {!loading && successMessage && uniqueId && (
           <UploadStatusCard message={successMessage} uniqueId={uniqueId} />

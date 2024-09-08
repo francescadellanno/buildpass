@@ -6,7 +6,7 @@ import DiaryEntryCard from "../components/DiaryEntryCard";
 import DiaryLayout from "../components/DiaryLayout";
 import Header from "../components/Header";
 import useGetAllDiaryEntries from "../hooks/useGetAllDiaryEntries";
-import Spinner from "../components/Spinner";
+import LoadingAnimation from "../components/LoadingAnimation";
 import Card from "../components/Card";
 import UploadStatusCard from "../components/UploadStatusCard";
 
@@ -41,7 +41,7 @@ const DiaryEntries: React.FC = () => {
       <Header />
       <DiaryLayout>
         <HeadingText>Your Diary Entries</HeadingText>
-        {loading && <Spinner text="Loading diary entries..." />}
+        {loading && <LoadingAnimation text="Loading diary entries..." />}
         {diaryEntries.length > 0 && (
           <EntryList>
             {diaryEntries.map((diaryEntry) => (
