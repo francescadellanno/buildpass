@@ -13,12 +13,12 @@ const Image = styled.img`
   height: auto;
   display: block;
 `;
-
-const ResponsiveImage: React.FC<{ imageUrl: string }> = ({ imageUrl }) => {
-  console.log("imageUrl", imageUrl);
+// TODO: Remove all console logs
+const ResponsiveImage: React.FC<{ imagePath: string }> = ({ imagePath }) => {
+  console.log("imageUrl", imagePath);
   return (
     <ImageWrapper>
-      <Image src={imageUrl} alt="image-from-construction-site" />
+      <Image src={imagePath} alt="image-from-construction-site" />
     </ImageWrapper>
   );
 };

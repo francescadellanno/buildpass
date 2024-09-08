@@ -37,8 +37,8 @@ const useSiteDiaryForm = () => {
   const [title, setTitle] = useState<string>("");
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
-  const [weatherConditions, setWeatherConditions] = useState(weatherOptions[0]);
-  const [image, setImage] = useState<string | null>(null);
+  const [weather, setWeatherConditions] = useState(weatherOptions[0]);
+  const [imagePath, setImagePath] = useState<string | null>(null);
   const [instructions, setInstructions] = useState<string>("");
   const [incidents, setIncidents] = useState<string>("");
   const [resources, setResources] = useState<Resource[]>([initialResource]);
@@ -69,7 +69,7 @@ const useSiteDiaryForm = () => {
       data: { publicUrl },
     } = supabase.storage.from(SUPABASE_BUCKET_NAME).getPublicUrl(fileName);
 
-    setImage(publicUrl);
+    setImagePath(publicUrl);
   };
 
   const handleResourceChange = (
@@ -115,7 +115,7 @@ const useSiteDiaryForm = () => {
     setWeatherConditions(weatherOptions[0]);
     setResources([initialResource]);
     setVisitors([initialVisitor]);
-    setImage(null);
+    setImagePath(null);
     setInstructions("");
     setIncidents("");
   };
@@ -138,10 +138,10 @@ const useSiteDiaryForm = () => {
           title,
           date,
           description,
-          weather: weatherConditions,
+          weather: weather,
           resources,
           visitors,
-          image,
+          imagePath,
           instructions,
           incidents,
         },
@@ -171,9 +171,9 @@ const useSiteDiaryForm = () => {
     setDate,
     description,
     setDescription,
-    weatherConditions,
+    weather,
     setWeatherConditions,
-    image,
+    imagePath,
     handleImageUpload,
     instructions,
     setInstructions,

@@ -25,14 +25,16 @@ const ButtonWrapper = styled.div`
   gap: 16px;
 `;
 
+// TODO: Consolidate use of report and diary entry
+
 const StatusUpdateCard: React.FC<{
-  heading: string;
+  heading?: string;
   message: string;
   uniqueId?: string;
 }> = ({ heading, message, uniqueId }) => {
   return (
     <StatusUpdateCardWrapper>
-      <HeadingText>{heading}</HeadingText>
+      {heading && <HeadingText>{heading}</HeadingText>}
       <Message>{message}</Message>
       <ButtonWrapper>
         {uniqueId && (
@@ -41,7 +43,7 @@ const StatusUpdateCard: React.FC<{
             path={`/diary-entry/${uniqueId}`}
           />
         )}
-        <Button text="+ Add Another Report" path="/add-diary-entry" />
+        <Button text="+ Add Report" path="/add-diary-entry" />
       </ButtonWrapper>
     </StatusUpdateCardWrapper>
   );

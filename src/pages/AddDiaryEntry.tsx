@@ -60,9 +60,9 @@ const SiteDiaryForm: React.FC = () => {
     setDate,
     description,
     setDescription,
-    weatherConditions,
+    weather,
     setWeatherConditions,
-    image,
+    imagePath,
     handleImageUpload,
     instructions,
     setInstructions,
@@ -119,7 +119,7 @@ const SiteDiaryForm: React.FC = () => {
               />
               <DateInput date={date} setDate={setDate} />
               <WeatherConditionsInput
-                weatherConditions={weatherConditions}
+                weather={weather}
                 setWeatherConditions={setWeatherConditions}
                 weatherOptions={weatherOptions}
               />

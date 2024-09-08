@@ -38,37 +38,55 @@ const DiaryEntryCard: React.FC<{
   entry: SiteDiaryEntry;
   compressed?: boolean;
 }> = ({ entry, compressed = false }) => {
-  const visitorCategories = entry.visitors.map(
-    (visitor) => `${visitor.type}: ${visitor.organization || visitor.person}`
-  );
-  const resourceCategories = entry.resources.map(
-    (resource) => `${resource.type}: ${resource.description}`
-  );
+  const {
+    date,
+    description,
+    imagePath,
+    title,
+    incidents,
+    instructions,
+    visitors,
+    weather,
+    resources,
+  } = entry;
+
+  const visitorCategories =
+    visitors?.map(
+      (visitor) => `${visitor.type}: ${visitor.organization || visitor.person}`
+    ) || [];
+  const resourceCategories =
+    resources?.map((resource) => `${resource.type}: ${resource.description}`) ||
+    [];
 
   return (
     <DiaryEntryCardWrapper>
-      <Title>{entry.title}</Title>
-      <Date>{entry.date}</Date>
+      <Title>{title}</Title>
+      <Date>{date}</Date>
       {!compressed && (
         <Content>
-          <DiaryEntryBlock
-            title="Description"
-            description={entry.description}
-          />
-          <DiaryEntryBlock
-            title="Weather Conditions"
-            description={entry.weatherConditions}
-          />
-          <DiaryEntryBlock title="Incidents" description={entry.incidents} />
-          <DiaryEntryBlock title="Visitors" description={visitorCategories} />
-          <DiaryEntryBlock
-            title="Instructions"
-            description={entry.instructions}
-          />
-          <DiaryEntryBlock title="Resources" description={resourceCategories} />
+          {description && (
+            <DiaryEntryBlock title="Description" value={description} />
+          )}
+          {weather && (
+            <DiaryEntryBlock title="Weather Conditions" value={weather} />
+          )}
+          {incidents && <DiaryEntryBlock title="Incidents" value={incidents} />}
+          {visitorCategories && (
+            <DiaryEntryBlock title="Visitors" value={visitorCategories} />
+          )}
+          {instructions && (
+            <DiaryEntryBlock title="Instructions" value={instructions} />
+          )}
+          {resourceCategories && (
+            <DiaryEntryBlock title="Resources" value={resourceCategories} />
+          )}
           {/* TODO could make image  and image url the same name */}
-          <Heading>Site Image</Heading>
-          <ResponsiveImage imageUrl={entry.image} />
+          {imagePath && (
+            <>
+              <Heading>Site Image</Heading>
+              <ResponsiveImage imagePath={imagePath} />
+            </>
+          )}
         </Content>
       )}
     </DiaryEntryCardWrapper>

@@ -1,13 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
-import { colors, siteDiary } from "../constants";
+import { colors } from "../constants";
 import DiaryEntryCard from "../components/DiaryEntryCard";
 import DiaryLayout from "../components/DiaryLayout";
 import Header from "../components/Header";
 import useSupabaseData from "../hooks/useSupabaseData";
 import Spinner from "../components/Spinner";
 import Card from "../components/Card";
+import Button from "../components/Button";
+import StatusUpdateCard from "../components/StatusUpdateCard";
 
 const HeadingText = styled.h1`
   color: ${colors.dark};
@@ -45,7 +47,7 @@ const EntryLink = styled(Link)`
 
 const DiaryEntries: React.FC = () => {
   const { data, loading, error } = useSupabaseData();
-
+  console.log("$$test data", data, data.length);
   return (
     <>
       <BackgroundGlobalStyle />
@@ -53,7 +55,7 @@ const DiaryEntries: React.FC = () => {
       <DiaryLayout>
         <HeadingText>Your Reports</HeadingText>
         {loading && <Spinner text="Loading reports..." />}
-        {!loading && !error && (
+        {!loading && !error && data.length > 0 && (
           <EntryList>
             {data.map((entry) => (
               <EntryLink key={entry.id} to={`/diary-entry/${entry.id}`}>
@@ -61,6 +63,11 @@ const DiaryEntries: React.FC = () => {
               </EntryLink>
             ))}
           </EntryList>
+        )}
+        {!loading && !error && data.length === 0 && (
+          <>
+            <StatusUpdateCard message="No reports yet, why not add one?" />
+          </>
         )}
         {/* TODO: Could generalise the status update component */}
         {error && <Card>Error loading reports, please try again later. </Card>}

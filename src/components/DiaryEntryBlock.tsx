@@ -11,22 +11,19 @@ const Heading = styled.div`
   text-align: left;
 `;
 
-const Description = styled.div`
+const Value = styled.div`
   text-align: left;
 `;
 
 const DiaryEntryBlock: React.FC<{
   title: string;
-  description: string | string[];
-}> = ({ title, description }) => {
+  value: string | string[];
+}> = ({ title, value }) => {
   return (
     <DiaryEntryBlockWrapper>
       <Heading>{title}</Heading>
-      {!Array.isArray(description) && <Description>{description}</Description>}
-      {Array.isArray(description) &&
-        description.map((description) => (
-          <Description>{description}</Description>
-        ))}
+      {!Array.isArray(value) && <Value>{value}</Value>}
+      {Array.isArray(value) && value.map((value) => <Value>{value}</Value>)}
     </DiaryEntryBlockWrapper>
   );
 };

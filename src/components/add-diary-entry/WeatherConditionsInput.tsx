@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { colors } from "../../constants";
 
 interface WeatherConditionsInputProps {
-  weatherConditions: string;
+  weather: string;
   setWeatherConditions: (value: string) => void;
   weatherOptions: string[];
 }
@@ -37,15 +37,15 @@ const Select = styled.select`
 `;
 
 const WeatherConditionsInput: React.FC<WeatherConditionsInputProps> = ({
-  weatherConditions,
+  weather,
   setWeatherConditions,
   weatherOptions,
 }) => (
   <Container>
-    <Label htmlFor="weatherConditions">Weather</Label>
+    <Label htmlFor="weather">Weather</Label>
     <Select
-      id="weatherConditions"
-      value={weatherConditions}
+      id="weather"
+      value={weather}
       onChange={(e) => setWeatherConditions(e.target.value)}
     >
       {weatherOptions.map((option) => (
