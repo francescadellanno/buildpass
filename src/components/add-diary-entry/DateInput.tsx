@@ -27,12 +27,6 @@ const Input = styled.input`
   border: 1px solid ${colors.dark};
   border-radius: 4px;
   font-size: 1rem;
-  transition: border-color 0.3s;
-
-  &:focus {
-    border-color: #007bff;
-    outline: none;
-  }
 `;
 
 const DateInput: React.FC<DateInputProps> = ({ date, setDate }) => (

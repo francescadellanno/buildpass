@@ -47,18 +47,14 @@ const useSupabaseData = () => {
       setLoading(true);
 
       try {
-        // Check if cached data exists and is still valid
         const cachedData = getCacheWithExpiry("supabaseData");
 
         if (cachedData) {
-          console.log("Using cached data");
           setData(cachedData);
           setLoading(false);
           return;
         }
 
-        // Fetch fresh data from Supabase if no valid cache exists
-        console.log("Fetching fresh data");
         const { data: tableData, error: fetchError } = await supabase
           .from(SUPABASE_TABLE_NAME)
           .select("*");

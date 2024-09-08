@@ -13,9 +13,8 @@ const Image = styled.img`
   height: auto;
   display: block;
 `;
-// TODO: Remove all console logs
+
 const ResponsiveImage: React.FC<{ imagePath: string }> = ({ imagePath }) => {
-  console.log("imageUrl", imagePath);
   return (
     <ImageWrapper>
       <Image src={imagePath} alt="image-from-construction-site" />

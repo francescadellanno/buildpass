@@ -8,7 +8,6 @@ import Header from "../components/Header";
 import useSupabaseData from "../hooks/useSupabaseData";
 import Spinner from "../components/Spinner";
 import Card from "../components/Card";
-import Button from "../components/Button";
 import StatusUpdateCard from "../components/StatusUpdateCard";
 
 const HeadingText = styled.h1`
@@ -28,7 +27,7 @@ const BackgroundGlobalStyle = createGlobalStyle`
   }
 `;
 
-const EntryList = styled.div`
+const EntryList = styled.section`
   display: grid;
   grid-gap: 20px;
 `;
@@ -47,18 +46,18 @@ const EntryLink = styled(Link)`
 
 const DiaryEntries: React.FC = () => {
   const { data, loading, error } = useSupabaseData();
-  console.log("$$test data", data, data.length);
+
   return (
     <>
       <BackgroundGlobalStyle />
       <Header />
       <DiaryLayout>
-        <HeadingText>Your Site Diary</HeadingText>
+        <HeadingText>Your Diary Entries</HeadingText>
         {loading && <Spinner text="Loading diary entries..." />}
         {!loading && !error && data.length > 0 && (
           <EntryList>
             {data.map((entry) => (
-              <EntryLink key={entry.id} to={`/diary-entry/${entry.id}`}>
+              <EntryLink key={entry.id} to={`/diary-entries/${entry.id}`}>
                 <DiaryEntryCard compressed entry={entry} />
               </EntryLink>
             ))}

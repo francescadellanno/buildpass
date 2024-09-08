@@ -15,16 +15,6 @@ const SubmitButton = styled.button`
   &:hover {
     background-color: ${colors.primary};
   }
-
-  &:active {
-    background-color: #004494;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
-
-  &:disabled {
-    background-color: #ccc; /* Disabled state color */
-    cursor: not-allowed;
-  }
 `;
 
 export default SubmitButton;

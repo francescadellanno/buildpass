@@ -10,7 +10,7 @@ import styled, { createGlobalStyle } from "styled-components";
 import Header from "../components/Header";
 import DiaryLayout from "../components/DiaryLayout";
 import SubmitButton from "../components/add-diary-entry/SubmitButton";
-import useSiteDiaryForm from "../hooks";
+import useSiteDiaryForm from "../hooks/useSiteDiaryForm";
 import TextInput from "../components/add-diary-entry/TextInput";
 import Spinner from "../components/Spinner";
 import StatusUpdateCard from "../components/StatusUpdateCard";

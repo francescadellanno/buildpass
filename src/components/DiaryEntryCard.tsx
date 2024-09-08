@@ -5,15 +5,13 @@ import DiaryEntryBlock from "./DiaryEntryBlock";
 import Card from "./Card";
 import ResponsiveImage from "./ResponsiveImage";
 
-// TODO: Go through h1, h2, h3, h4, h5, h6 and make sure they are styled correctly
-
 const DiaryEntryCardWrapper = styled(Card)`
   text-align: center;
 `;
 
 const Title = styled.h2`
   font-size: 1.5rem;
-  font-weight: bolD;
+  font-weight: bold;
   margin: 10px;
 `;
 
@@ -33,7 +31,6 @@ const Heading = styled.div`
   text-align: left;
 `;
 
-// Date, description, weather, image
 const DiaryEntryCard: React.FC<{
   entry: SiteDiaryEntry;
   compressed?: boolean;
@@ -71,16 +68,15 @@ const DiaryEntryCard: React.FC<{
             <DiaryEntryBlock title="Weather Conditions" value={weather} />
           )}
           {incidents && <DiaryEntryBlock title="Incidents" value={incidents} />}
-          {visitorCategories && (
+          {visitorCategories.length > 0 && (
             <DiaryEntryBlock title="Visitors" value={visitorCategories} />
           )}
           {instructions && (
             <DiaryEntryBlock title="Instructions" value={instructions} />
           )}
-          {resourceCategories && (
+          {resourceCategories.length > 0 && (
             <DiaryEntryBlock title="Resources" value={resourceCategories} />
           )}
-          {/* TODO could make image  and image url the same name */}
           {imagePath && (
             <>
               <Heading>Site Image</Heading>

@@ -2,17 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
 import { colors } from "../constants";
+import Header from "../components/Header";
 
-// TODO: Modify to be mobile first
-//TODO: Change colours to use hash
-//TODO: Create constants for mobile / small screen sizes
-//TODO: Add semantic headings etc h1, h2, h3 etc
-//TODO: Maybe use REM instead of PX
 const BackgroundGlobalStyle = createGlobalStyle`
   body, html {
     margin: 0;
     height: 100%;
-    background-color: ${colors.dark};
+    background-color: ${colors.lightest};
   }
 
   #root {
@@ -22,17 +18,18 @@ const BackgroundGlobalStyle = createGlobalStyle`
 
 const HomeWrapper = styled.div`
   align-items: center;
-  color: ${colors.lightest};
   display: flex;
   flex-direction: column;
   gap: 20px;
-  height: 100%;
   justify-content: center;
+  margin-top: 100px;
 `;
 
-const HeadingText = styled.div`
+const HeadingText = styled.h1`
+  color: ${colors.dark};
   font-size: 4rem;
   text-align: center;
+  margin: 0;
 `;
 
 const GetStartedLink = styled(Link)`
@@ -56,9 +53,11 @@ const Home: React.FC = () => {
   return (
     <>
       <BackgroundGlobalStyle />
+      <Header />
       <HomeWrapper>
-        <HeadingText>Construction</HeadingText>
-        <HeadingText>Your Site Diary</HeadingText>
+        <HeadingText>
+          Your Construction <br /> Site Diary
+        </HeadingText>
         <div>
           <GetStartedLink to="/diary-entries">GET STARTED</GetStartedLink>
         </div>

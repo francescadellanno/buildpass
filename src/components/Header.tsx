@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { breakpoints, colors } from "../constants";
 
-const HeaderWrapper = styled.div`
+const HeaderWrapper = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -16,23 +16,26 @@ const HeaderWrapper = styled.div`
   }
 `;
 
-const Heading = styled.div`
+const Heading = styled.h1`
   color: ${colors.dark};
   font-weight: bold;
   font-size: 3rem;
+  margin: 0;
 `;
 
-const HeaderLinks = styled.div`
+const HeaderLinks = styled.nav`
   display: flex;
   gap: 20px;
 `;
 
-const HeaderLink = styled(Link)`
+const HeaderLink = styled(Link)<{ isActive?: boolean }>`
   position: relative;
   text-decoration: none;
   color: ${colors.dark};
   font-size: 1.25rem;
-
+  font-weight: ${({ isActive }) => (isActive ? "bold" : "normal")};
+  width: 100%;
+  text-wrap: nowrap;
   &::after {
     content: "";
     position: absolute;
@@ -49,16 +52,29 @@ const HeaderLink = styled(Link)`
   }
 `;
 
-// TODO: Make selected header link underlined or bold
-
+// TODO: Fields not neccessarily null? Or even remove fields being required thats a bit annoying
 const Header: React.FC = () => {
+  const location = useLocation();
+
   return (
     <HeaderWrapper>
       <Heading>Site Diary</Heading>
       <HeaderLinks>
-        <HeaderLink to="/">Home</HeaderLink>
-        <HeaderLink to="/diary-entries">Diary</HeaderLink>
-        <HeaderLink to="/add-diary-entry">+ Add Entry</HeaderLink>
+        <HeaderLink to="/" isActive={location.pathname === "/"}>
+          Home
+        </HeaderLink>
+        <HeaderLink
+          to="/diary-entries"
+          isActive={location.pathname.includes("/diary-entries")}
+        >
+          Diary
+        </HeaderLink>
+        <HeaderLink
+          to="/add-diary-entry"
+          isActive={location.pathname === "/add-diary-entry"}
+        >
+          + Add Entry
+        </HeaderLink>
       </HeaderLinks>
     </HeaderWrapper>
   );

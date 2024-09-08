@@ -3,11 +3,9 @@ import {
   SUPABASE_BUCKET_NAME,
   SUPABASE_TABLE_NAME,
   weatherOptions,
-} from "./constants";
-import { supabase } from "./supabaseClient";
-import { clearCache } from "./hooks/useSupabaseData";
-
-//TODO: Change the name of this file and move into hooks folder
+} from "../constants";
+import { supabase } from "../supabaseClient";
+import { clearCache } from "./useSupabaseData";
 
 interface Resource {
   type: string;

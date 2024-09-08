@@ -25,8 +25,6 @@ const ButtonWrapper = styled.div`
   gap: 16px;
 `;
 
-// TODO: Consolidate use of report and diary entry
-
 const StatusUpdateCard: React.FC<{
   message: string;
   uniqueId?: string;
@@ -36,7 +34,7 @@ const StatusUpdateCard: React.FC<{
       <Message>{message}</Message>
       <ButtonWrapper>
         {uniqueId && (
-          <Button text="View Diary Entry" path={`/diary-entry/${uniqueId}`} />
+          <Button text="View Diary Entry" path={`/diary-entries/${uniqueId}`} />
         )}
         <Button text="+ Add Entry" path="/add-diary-entry" />
       </ButtonWrapper>

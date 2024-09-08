@@ -9,9 +9,6 @@ import Button from "../components/Button";
 import useSupabaseData from "../hooks/useSupabaseData";
 import Card from "../components/Card";
 
-//TODO: Make sure using all data from data entries / assessment
-//TODO: Update weather to be better...
-
 const BackgroundGlobalStyle = createGlobalStyle`
   body, html {
     margin: 0;
