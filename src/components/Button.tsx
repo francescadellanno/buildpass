@@ -6,7 +6,6 @@ const ButtonWrapper = styled(Link)`
   display: flex;
   align-items: center;
   padding: 10px 20px;
-  margin: 10px;
   background-color: #b36a5e;
   color: white;
   text-decoration: none;
@@ -18,7 +17,6 @@ const ButtonWrapper = styled(Link)`
 
   &:hover {
     background-color: #c97c5d;
-    transform: translateX(-5px);
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   }
 

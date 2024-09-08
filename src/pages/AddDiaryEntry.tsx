@@ -13,7 +13,7 @@ import SubmitButton from "../components/add-diary-entry/SubmitButton";
 import useSiteDiaryForm from "../hooks";
 import TextInput from "../components/add-diary-entry/TextInput";
 import Spinner from "../components/Spinner";
-import Button from "../components/Button";
+import StatusUpdateCard from "../components/StatusUpdateCard";
 
 const BackgroundGlobalStyle = createGlobalStyle`
   body, html {
@@ -37,22 +37,6 @@ const InputGroupWrapper = styled.div`
     flex-direction: row;
     justify-content: space-between;
   }
-`;
-
-const SuccessText = styled.div`
-  background-color: ${colors.white};
-  border: 2px solid ${colors.primary};
-  border-radius: 16px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
-  color: ${colors.dark};
-  padding: 20px;
-  text-align: center;
-  font-size: 1rem;
-`;
-
-const SuccessButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
 `;
 
 // TODO: Look into ununsed imports for hooks
@@ -95,23 +79,20 @@ const SiteDiaryForm: React.FC = () => {
 
       <DiaryLayout>
         {loading && <Spinner />}
-        {!loading && successMessage && (
-          <>
-            <SuccessText>
-              {successMessage}Diary entry "${title}" submitted successfully!
-            </SuccessText>
-            <SuccessButtonWrapper>
-              {/* TODO Update this to include correct id from db */}
-              <Button
-                text="View uploaded report"
-                path={`/diary-entry/${uniqueId}`}
-              />
-              <Button text="+ Add another report" path="/add-diary-entry" />
-            </SuccessButtonWrapper>
-          </>
+        {successMessage && uniqueId && (
+          <StatusUpdateCard
+            heading="Success!"
+            message={successMessage}
+            uniqueId={uniqueId}
+          />
         )}
-        {!loading && errorMessage && <div>{errorMessage}</div>}
-        {showForm && (
+        {errorMessage && (
+          <StatusUpdateCard
+            heading="Uh oh! Looks like something went wrong."
+            message={errorMessage}
+          />
+        )}
+        {!showForm && (
           <form onSubmit={handleSubmit}>
             <InputGroupWrapper>
               <TextInput
