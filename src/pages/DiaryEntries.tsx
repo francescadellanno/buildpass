@@ -5,6 +5,7 @@ import { colors, siteDiary } from "../constants";
 import DiaryEntryCard from "../components/DiaryEntryCard";
 import DiaryLayout from "../components/DiaryLayout";
 import Header from "../components/Header";
+import useSupabaseData from "../hooks/useSupabaseData";
 
 const HeadingText = styled.h1`
   color: ${colors.dark};
@@ -41,6 +42,9 @@ const EntryLink = styled(Link)`
 `;
 
 const DiaryEntries: React.FC = () => {
+  const { data, loading, error } = useSupabaseData();
+  // I considered putting a loading spinner here while the data was loading but the network request is so fast that it's really not necessary
+
   return (
     <>
       <BackgroundGlobalStyle />
@@ -48,7 +52,7 @@ const DiaryEntries: React.FC = () => {
       <DiaryLayout>
         <HeadingText>Your Reports</HeadingText>
         <EntryList>
-          {siteDiary.map((entry) => (
+          {data.map((entry) => (
             <EntryLink key={entry.id} to={`/diary-entry/${entry.id}`}>
               <DiaryEntryCard compressed entry={entry} />
             </EntryLink>

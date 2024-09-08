@@ -1,8 +1,9 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import { colors } from "../constants";
+import Card from "./Card";
 
-const SpinnerWrapper = styled.div`
+const SpinnerWrapper = styled(Card)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,14 +11,8 @@ const SpinnerWrapper = styled.div`
   height: 100%;
   gap: 20px;
   margin: 4rem 0;
-
-  background-color: ${colors.white};
-  border: 2px solid ${colors.primary};
-  border-radius: 16px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
-  color: ${colors.dark};
-  padding: 30px 60px 30px 30px;
   font-size: 1rem;
+  padding: 30px 60px 30px 30px;
 `;
 
 // Keyframes for bouncing animation

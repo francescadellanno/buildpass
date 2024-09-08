@@ -1,6 +1,12 @@
 import { SiteDiaryEntry } from "./types";
 
+// TODO: Create a types file
+
 // TODO: Might not need all of these breakpoints
+
+export const SUPABASE_TABLE_NAME = "BuildPass Site Diary";
+export const SUPABASE_BUCKET_NAME = "buildpass-coding-test-bucket";
+
 export const breakpoints = {
   desktop: "1200px",
   tablet: "768px",
@@ -68,6 +74,8 @@ export const siteDiary: SiteDiaryEntry[] = [
     ],
     instructions:
       "Ensure additional safety barriers are installed around excavation areas.",
+    imagePath:
+      "https://zclisrjawalimjftomem.supabase.co/storage/v1/object/public/buildpass-coding-test-bucket/1725754908145_corgi-pic.jpg",
   },
   {
     id: "4",
@@ -105,6 +113,8 @@ export const siteDiary: SiteDiaryEntry[] = [
     ],
     instructions:
       "Adjust concrete pouring schedule to accommodate weather conditions.",
+    imagePath:
+      "https://zclisrjawalimjftomem.supabase.co/storage/v1/object/public/buildpass-coding-test-bucket/1725754908145_corgi-pic.jpg",
   },
   {
     id: "3",
@@ -143,6 +153,8 @@ export const siteDiary: SiteDiaryEntry[] = [
     ],
     instructions:
       "Coordinate with electrical and plumbing teams to ensure installation compatibility.",
+    imagePath:
+      "https://zclisrjawalimjftomem.supabase.co/storage/v1/object/public/buildpass-coding-test-bucket/1725754908145_corgi-pic.jpg",
   },
   {
     id: "2",
@@ -181,6 +193,8 @@ export const siteDiary: SiteDiaryEntry[] = [
     ],
     instructions:
       "Review interior design changes with the team and adjust framing plans as needed.",
+    imagePath:
+      "https://zclisrjawalimjftomem.supabase.co/storage/v1/object/public/buildpass-coding-test-bucket/1725754908145_corgi-pic.jpg",
   },
   {
     id: "1",
@@ -218,5 +232,7 @@ export const siteDiary: SiteDiaryEntry[] = [
     ],
     instructions:
       "Prepare for upcoming inspections by ensuring all framing and drywall work is up to code.",
+    imagePath:
+      "https://zclisrjawalimjftomem.supabase.co/storage/v1/object/public/buildpass-coding-test-bucket/1725754908145_corgi-pic.jpg",
   },
 ];

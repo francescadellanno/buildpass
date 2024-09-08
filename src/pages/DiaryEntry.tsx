@@ -6,6 +6,9 @@ import DiaryEntryCard from "../components/DiaryEntryCard";
 import DiaryLayout from "../components/DiaryLayout";
 import Header from "../components/Header";
 import Button from "../components/Button";
+import useSupabaseData from "../hooks/useSupabaseData";
+import StatusUpdateCard from "../components/StatusUpdateCard";
+import Card from "../components/Card";
 
 //TODO: Make sure using all data from data entries / assessment
 //TODO: Update weather to be better...
@@ -28,12 +31,8 @@ const ButtonWrapper = styled.div`
 
 const DiaryEntry: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const entry = siteDiary.find((entry) => entry.id === id);
-
-  //TODO: Improve this error handling
-  if (!entry) {
-    return <div>No entry found</div>;
-  }
+  const { data, loading, error } = useSupabaseData();
+  const entry = data.find((entry) => entry.id === id);
 
   return (
     <>
@@ -43,7 +42,13 @@ const DiaryEntry: React.FC = () => {
         <ButtonWrapper>
           <Button arrow text="Back" path="/diary-entries" />
         </ButtonWrapper>
-        <DiaryEntryCard entry={entry} />
+        {!entry && (
+          <Card>
+            Uh oh! Looks like the report you were looking for doesn't exist
+            anymore.
+          </Card>
+        )}
+        {entry && <DiaryEntryCard entry={entry} />}
       </DiaryLayout>
     </>
   );

@@ -1,20 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { colors } from "../constants";
 import { SiteDiaryEntry } from "../types";
 import DiaryEntryBlock from "./DiaryEntryBlock";
+import Card from "./Card";
 
 // TODO: Go through h1, h2, h3, h4, h5, h6 and make sure they are styled correctly
 
-const DiaryEntryCardWrapper = styled.div`
-  background-color: ${colors.white};
-  border: 2px solid ${colors.primary};
-  border-radius: 16px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
-  color: ${colors.dark};
-  padding: 20px;
+const DiaryEntryCardWrapper = styled(Card)`
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 `;
 
 const Title = styled.h2`

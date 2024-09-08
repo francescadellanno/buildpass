@@ -1,6 +1,13 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { weatherOptions } from "./constants";
+import {
+  SUPABASE_BUCKET_NAME,
+  SUPABASE_TABLE_NAME,
+  weatherOptions,
+} from "./constants";
 import { supabase } from "./supabaseClient";
+import { clearCache } from "./hooks/useSupabaseData";
+
+//TODO: Change the name of this file and move into hooks folder
 
 interface Resource {
   type: string;
@@ -50,7 +57,7 @@ const useSiteDiaryForm = () => {
     const fileName = `${Date.now()}_${file.name}`;
 
     const { data, error } = await supabase.storage
-      .from("buildpass-coding-test-bucket")
+      .from(SUPABASE_BUCKET_NAME)
       .upload(fileName, file);
 
     if (error) {
@@ -60,9 +67,7 @@ const useSiteDiaryForm = () => {
 
     const {
       data: { publicUrl },
-    } = supabase.storage
-      .from("buildpass-coding-test-bucket")
-      .getPublicUrl(fileName);
+    } = supabase.storage.from(SUPABASE_BUCKET_NAME).getPublicUrl(fileName);
 
     setImage(publicUrl);
   };
@@ -127,7 +132,7 @@ const useSiteDiaryForm = () => {
     }, 3000);
 
     const { data, error } = await supabase
-      .from("BuildPass Site Diary")
+      .from(SUPABASE_TABLE_NAME)
       .insert([
         {
           title,
@@ -150,8 +155,10 @@ const useSiteDiaryForm = () => {
       resetForm();
     } else {
       setSuccessMessage(`Diary entry "${title}" submitted successfully!`);
-      setUniqueId(data?.[0]?.id);
       resetForm();
+      setUniqueId(data?.[0]?.id);
+      // Clear the cache after successful update
+      clearCache();
     }
   };
 
