@@ -92,7 +92,7 @@ const SiteDiaryForm: React.FC = () => {
             message={errorMessage}
           />
         )}
-        {!showForm && (
+        {showForm && (
           <form onSubmit={handleSubmit}>
             <InputGroupWrapper>
               <TextInput
