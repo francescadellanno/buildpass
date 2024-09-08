@@ -53,8 +53,8 @@ const DiaryEntries: React.FC = () => {
       <BackgroundGlobalStyle />
       <Header />
       <DiaryLayout>
-        <HeadingText>Your Reports</HeadingText>
-        {loading && <Spinner text="Loading reports..." />}
+        <HeadingText>Your Site Diary</HeadingText>
+        {loading && <Spinner text="Loading diary entries..." />}
         {!loading && !error && data.length > 0 && (
           <EntryList>
             {data.map((entry) => (
@@ -66,11 +66,13 @@ const DiaryEntries: React.FC = () => {
         )}
         {!loading && !error && data.length === 0 && (
           <>
-            <StatusUpdateCard message="No reports yet, why not add one?" />
+            <StatusUpdateCard message="No diary entries yet, why not add one?" />
           </>
         )}
         {/* TODO: Could generalise the status update component */}
-        {error && <Card>Error loading reports, please try again later. </Card>}
+        {error && (
+          <Card>Error loading diary entries, please try again later. </Card>
+        )}
       </DiaryLayout>
     </>
   );

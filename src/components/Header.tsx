@@ -57,8 +57,8 @@ const Header: React.FC = () => {
       <Heading>Site Diary</Heading>
       <HeaderLinks>
         <HeaderLink to="/">Home</HeaderLink>
-        <HeaderLink to="/diary-entries">Reports</HeaderLink>
-        <HeaderLink to="/add-diary-entry">Add Report</HeaderLink>
+        <HeaderLink to="/diary-entries">Diary</HeaderLink>
+        <HeaderLink to="/add-diary-entry">+ Add Entry</HeaderLink>
       </HeaderLinks>
     </HeaderWrapper>
   );

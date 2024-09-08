@@ -28,22 +28,17 @@ const ButtonWrapper = styled.div`
 // TODO: Consolidate use of report and diary entry
 
 const StatusUpdateCard: React.FC<{
-  heading?: string;
   message: string;
   uniqueId?: string;
-}> = ({ heading, message, uniqueId }) => {
+}> = ({ message, uniqueId }) => {
   return (
     <StatusUpdateCardWrapper>
-      {heading && <HeadingText>{heading}</HeadingText>}
       <Message>{message}</Message>
       <ButtonWrapper>
         {uniqueId && (
-          <Button
-            text="View Uploaded Report"
-            path={`/diary-entry/${uniqueId}`}
-          />
+          <Button text="View Diary Entry" path={`/diary-entry/${uniqueId}`} />
         )}
-        <Button text="+ Add Report" path="/add-diary-entry" />
+        <Button text="+ Add Entry" path="/add-diary-entry" />
       </ButtonWrapper>
     </StatusUpdateCardWrapper>
   );

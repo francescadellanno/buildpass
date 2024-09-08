@@ -1,12 +1,7 @@
-import { SiteDiaryEntry } from "./types";
-
-// TODO: Create a types file
-
-// TODO: Might not need all of these breakpoints
-
 export const SUPABASE_TABLE_NAME = "BuildPass Site Diary";
 export const SUPABASE_BUCKET_NAME = "buildpass-coding-test-bucket";
 
+// Defined breakpoints for responsive design (not all currently in use, kept for demonstration purposes)
 export const breakpoints = {
   desktop: "1200px",
   tablet: "768px",

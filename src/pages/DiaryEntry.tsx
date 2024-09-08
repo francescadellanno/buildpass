@@ -43,7 +43,7 @@ const DiaryEntry: React.FC = () => {
         </ButtonWrapper>
         {!entry && (
           <Card>
-            Uh oh! Looks like the report you were looking for doesn't exist
+            Uh oh! Looks like the diary entry you were looking for doesn't exist
             anymore.
           </Card>
         )}

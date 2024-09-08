@@ -126,7 +126,7 @@ const useSiteDiaryForm = () => {
     setSuccessMessage("");
     setErrorMessage("");
 
-    // This is not neccessary / normal but the network request was so fast and I wanted to show that I had thought about loading states
+    // Simulated delay to demonstrate loading state handling
     setTimeout(() => {
       setLoading(false);
     }, 3000);

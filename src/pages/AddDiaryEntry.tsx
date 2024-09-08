@@ -96,17 +96,10 @@ const SiteDiaryForm: React.FC = () => {
           </SpinnerWrapper>
         )}
         {!loading && successMessage && uniqueId && (
-          <StatusUpdateCard
-            heading="Success!"
-            message={successMessage}
-            uniqueId={uniqueId}
-          />
+          <StatusUpdateCard message={successMessage} uniqueId={uniqueId} />
         )}
         {!loading && errorMessage && (
-          <StatusUpdateCard
-            heading="Uh oh! Looks like something went wrong."
-            message={errorMessage}
-          />
+          <StatusUpdateCard message={errorMessage} />
         )}
         {showForm && (
           <form onSubmit={handleSubmit}>
