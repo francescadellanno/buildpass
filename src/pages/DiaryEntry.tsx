@@ -22,6 +22,10 @@ const BackgroundGlobalStyle = createGlobalStyle`
   }
 `;
 
+const ButtonWrapper = styled.div`
+  margin-bottom: 20px;
+`;
+
 const DiaryEntry: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const entry = siteDiary.find((entry) => entry.id === id);
@@ -36,9 +40,9 @@ const DiaryEntry: React.FC = () => {
       <BackgroundGlobalStyle />
       <Header />
       <DiaryLayout>
-        <div>
+        <ButtonWrapper>
           <Button arrow text="Back" path="/diary-entries" />
-        </div>
+        </ButtonWrapper>
         <DiaryEntryCard entry={entry} />
       </DiaryLayout>
     </>

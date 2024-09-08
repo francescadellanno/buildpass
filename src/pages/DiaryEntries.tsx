@@ -6,6 +6,11 @@ import DiaryEntryCard from "../components/DiaryEntryCard";
 import DiaryLayout from "../components/DiaryLayout";
 import Header from "../components/Header";
 
+const HeadingText = styled.h1`
+  color: ${colors.dark};
+  margin: 0 0 20px 0;
+`;
+
 const BackgroundGlobalStyle = createGlobalStyle`
   body, html {
     margin: 0;
@@ -41,9 +46,10 @@ const DiaryEntries: React.FC = () => {
       <BackgroundGlobalStyle />
       <Header />
       <DiaryLayout>
+        <HeadingText>Your Reports</HeadingText>
         <EntryList>
           {siteDiary.map((entry) => (
-            <EntryLink key={entry.id} to={`/diary-entry/entry/${entry.id}`}>
+            <EntryLink key={entry.id} to={`/diary-entry/${entry.id}`}>
               <DiaryEntryCard compressed entry={entry} />
             </EntryLink>
           ))}
