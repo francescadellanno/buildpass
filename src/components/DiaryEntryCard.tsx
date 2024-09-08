@@ -49,7 +49,10 @@ const DiaryEntryCard: React.FC<{
 
   const visitorCategories =
     visitors?.map(
-      (visitor) => `${visitor.type}: ${visitor.organization || visitor.person}`
+      (visitor) =>
+        `${visitor.type} (${visitor.date}): ${
+          visitor.organization || visitor.person
+        }`
     ) || [];
   const resourceCategories =
     resources?.map((resource) => `${resource.type}: ${resource.description}`) ||
