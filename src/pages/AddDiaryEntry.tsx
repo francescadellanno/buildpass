@@ -25,13 +25,6 @@ const HeadingText = styled.h1`
   margin: 0 0 20px 0;
 `;
 
-const LoadingAnimationWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-`;
-
 const InputGroupWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -81,11 +74,7 @@ const AddDiaryEntry: React.FC = () => {
       <Header />
       <DiaryLayout>
         <HeadingText>Add Diary Entry</HeadingText>
-        {loading && (
-          <LoadingAnimationWrapper>
-            <LoadingAnimation text="Submitting..." />
-          </LoadingAnimationWrapper>
-        )}
+        {loading && <LoadingAnimation text="Submitting..." />}
         {!loading && successMessage && uniqueId && (
           <UploadStatusCard message={successMessage} uniqueId={uniqueId} />
         )}
@@ -97,7 +86,7 @@ const AddDiaryEntry: React.FC = () => {
             <InputGroupWrapper>
               <TextInput
                 id="title"
-                labelText="Title"
+                labelText="Title*"
                 value={title}
                 setValue={setTitle}
                 required

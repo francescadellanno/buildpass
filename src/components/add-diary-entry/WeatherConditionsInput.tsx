@@ -42,7 +42,7 @@ const WeatherConditionsInput: React.FC<WeatherConditionsInputProps> = ({
   weatherOptions,
 }) => (
   <Container>
-    <Label htmlFor="weather">Weather</Label>
+    <Label htmlFor="weather">Weather*</Label>
     <Select
       id="weather"
       value={weather}

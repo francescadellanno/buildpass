@@ -39,8 +39,8 @@ const useSiteDiaryForm = () => {
   const [imagePath, setImagePath] = useState<string | null>(null);
   const [instructions, setInstructions] = useState<string>("");
   const [incidents, setIncidents] = useState<string>("");
-  const [resources, setResources] = useState<Resource[]>([initialResource]);
-  const [visitors, setVisitors] = useState<Visitor[]>([initialVisitor]);
+  const [resources, setResources] = useState<Resource[]>([]);
+  const [visitors, setVisitors] = useState<Visitor[]>([]);
   const [uniqueId, setUniqueId] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");

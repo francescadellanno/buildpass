@@ -10,7 +10,6 @@ const LoadingAnimationWrapper = styled(Card)`
   justify-content: center;
   height: 100%;
   gap: 20px;
-  margin: 4rem 0;
   font-size: 1rem;
   padding: 30px 60px 30px 30px;
 `;

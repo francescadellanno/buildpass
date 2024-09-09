@@ -35,7 +35,7 @@ const DescriptionInput: React.FC<DescriptionInputProps> = ({
   setDescription,
 }) => (
   <Container>
-    <Label htmlFor="description">Description</Label>
+    <Label htmlFor="description">Description*</Label>
     <Textarea
       id="description"
       value={description}

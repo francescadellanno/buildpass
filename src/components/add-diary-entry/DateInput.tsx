@@ -31,7 +31,7 @@ const Input = styled.input`
 
 const DateInput: React.FC<DateInputProps> = ({ date, setDate }) => (
   <Container>
-    <Label htmlFor="date">Date</Label>
+    <Label htmlFor="date">Date*</Label>
     <Input
       type="date"
       id="date"
