@@ -53,7 +53,6 @@ I did so many things with Chat GPT however largely code generation as for most o
 
 ## Future Considerations
 
-- I would hire a designer to make the UI look nicer.
 - I would create a component to handle the loading / error states for my fetch requests.
 - I would add caching to getDiaryEntryById as the caching currently only applies to getAllDiaryEntries.
 - I would add 'delete' / 'update' functionality for my diary entries.
@@ -61,3 +60,4 @@ I did so many things with Chat GPT however largely code generation as for most o
 - I would make the code more accessible e.g. for screen readers, check contrast issues, improve semantic HTML etc.
 - I would add more unit / integration / e2e tests.
 - As the app grows I would consider whether I wanted to use something like atomic design.
+- For speed, I would hire a designer to make the UI look nicer (or spend more time researching design myself, this would just take longer but would be fun to do).
