@@ -53,7 +53,7 @@ I did so many things with Chat GPT however largely code generation as for most o
 
 ## Future Considerations
 
-- I would create a component to handle the loading / error states for my fetch requests.
+- I would do a deeper dive into whether I could make further use of re-usable components e.g. for the form, as well as creating a component to handle the loading / error states for my fetch requests.
 - I would add caching to getDiaryEntryById as the caching currently only applies to getAllDiaryEntries.
 - I would add 'delete' / 'update' functionality for my diary entries.
 - I would improve the security of my Supabase setup, utilise RLS and put my sensitive keys in environment variables.
