@@ -3,8 +3,9 @@
 ## Running the project
 
 1. Clone the repository
-2. Run `npm install`
-3. Run `npm start`
+2. See example .env file and reach out to admin for environment variables
+3. Run `npm install`
+4. Run `npm start`
 
 ## Overview
 
