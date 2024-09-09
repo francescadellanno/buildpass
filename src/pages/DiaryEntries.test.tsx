@@ -5,7 +5,6 @@ import DiaryEntries from "./DiaryEntries";
 import useGetAllDiaryEntries from "../hooks/useGetAllDiaryEntries";
 import "@testing-library/jest-dom";
 
-// Mock the custom hook
 jest.mock("../hooks/useGetAllDiaryEntries", () => ({
   __esModule: true,
   default: jest.fn(),
@@ -69,9 +68,9 @@ describe("DiaryEntries", () => {
     });
 
     render(
-      <Router>
+      <MemoryRouter>
         <DiaryEntries />
-      </Router>
+      </MemoryRouter>
     );
 
     expect(await screen.findByText("Your Diary Entries")).toBeInTheDocument();
@@ -87,9 +86,9 @@ describe("DiaryEntries", () => {
     });
 
     render(
-      <Router>
+      <MemoryRouter>
         <DiaryEntries />
-      </Router>
+      </MemoryRouter>
     );
 
     expect(
@@ -105,9 +104,9 @@ describe("DiaryEntries", () => {
     });
 
     render(
-      <Router>
+      <MemoryRouter>
         <DiaryEntries />
-      </Router>
+      </MemoryRouter>
     );
 
     expect(
