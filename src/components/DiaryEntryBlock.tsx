@@ -23,7 +23,8 @@ const DiaryEntryBlock: React.FC<{
     <DiaryEntryBlockWrapper>
       <Heading>{title}</Heading>
       {!Array.isArray(value) && <Value>{value}</Value>}
-      {Array.isArray(value) && value.map((value) => <Value>{value}</Value>)}
+      {Array.isArray(value) &&
+        value.map((value) => <Value key={value}>{value}</Value>)}
     </DiaryEntryBlockWrapper>
   );
 };
