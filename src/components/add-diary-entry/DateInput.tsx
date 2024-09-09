@@ -36,11 +36,7 @@ const DateInput: React.FC<DateInputProps> = ({ date, setDate }) => (
       type="date"
       id="date"
       value={date}
-      onChange={(e) => {
-        console.log("$$typing-here", e.target.value);
-
-        setDate(e.target.value);
-      }}
+      onChange={(e) => setDate(e.target.value)}
       required
     />
   </Container>
