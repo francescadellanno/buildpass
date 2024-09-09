@@ -44,7 +44,7 @@ const InputGroupWrapper = styled.div`
   }
 `;
 
-const SiteDiaryForm: React.FC = () => {
+const AddDiaryEntry: React.FC = () => {
   const {
     title,
     setTitle,
@@ -146,4 +146,4 @@ const SiteDiaryForm: React.FC = () => {
   );
 };
 
-export default SiteDiaryForm;
+export default AddDiaryEntry;
