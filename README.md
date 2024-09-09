@@ -62,3 +62,4 @@ I did so many things with Chat GPT however largely code generation as for most o
 - I would add more unit / integration / e2e tests.
 - As the app grows I would consider whether I wanted to use something like atomic design.
 - For speed, I would hire a designer to make the UI look nicer (or spend more time researching design myself, this would just take longer but would be fun to do).
+- I would address the "Warning: React does not recognize the `isActive` prop on a DOM element." warning. This is related to the isActive prop on my HeaderLink component.
