@@ -28,14 +28,14 @@ const HeaderLinks = styled.nav`
   gap: 20px;
 `;
 
-const HeaderLink = styled(Link)<{ isActive?: boolean }>`
+const HeaderLink = styled(Link)`
   position: relative;
   text-decoration: none;
   color: ${colors.dark};
   font-size: 1.25rem;
-  font-weight: ${({ isActive }) => (isActive ? "bold" : "normal")};
   width: 100%;
   text-wrap: nowrap;
+
   &::after {
     content: "";
     position: absolute;
@@ -55,22 +55,23 @@ const HeaderLink = styled(Link)<{ isActive?: boolean }>`
 const Header: React.FC = () => {
   const location = useLocation();
 
+  const getLinkStyle = (path: string) => ({
+    fontWeight: location.pathname === path ? "bold" : "normal",
+  });
+
   return (
     <HeaderWrapper>
       <Heading>Site Diary</Heading>
       <HeaderLinks>
-        <HeaderLink to="/" isActive={location.pathname === "/"}>
+        <HeaderLink to="/" style={getLinkStyle("/")}>
           Home
         </HeaderLink>
-        <HeaderLink
-          to="/diary-entries"
-          isActive={location.pathname.includes("/diary-entries")}
-        >
+        <HeaderLink to="/diary-entries" style={getLinkStyle("/diary-entries")}>
           Diary
         </HeaderLink>
         <HeaderLink
           to="/add-diary-entry"
-          isActive={location.pathname === "/add-diary-entry"}
+          style={getLinkStyle("/add-diary-entry")}
         >
           + Add Entry
         </HeaderLink>
